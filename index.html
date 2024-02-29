@@ -581,24 +581,9 @@
 
     icpLink.target = "_blank";
 
-    if (firstLevelDomain.includes("罗子琛.网址") || firstLevelDomainPunny.includes("xn--i8sw09cq3h.xn--ses554g")) {
-        document.title = "罗子琛.网址";
-        icpLink.href = "https://beian.miit.gov.cn/";
-        icpLink.innerText = "粤ICP备2023142758号-1";
-        plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483717";
-        plcLink.innerText = "粤公网安备44011102483717";
-    } else if (firstLevelDomain.includes("seeleo.com")) {
-        document.title = "SEELEO.com";
-        icpLink.href = "https://beian.miit.gov.cn/";
-        icpLink.innerText = "粤ICP备2023142758号-2";
-        plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483728";
-        plcLink.innerText = "粤公网安备44011102483728";
-    } else {
-        document.title = firstLevelDomain;
-        icpSpan.style.display = "none";
-        plcSpan.style.display = "none";
-        ip6Span.style.display = "none";
-    }
+    document.title = firstLevelDomain;
+    icpSpan.style.display = "none";
+    plcSpan.style.display = "none";
 
     sslLink.href = "https://ipw.cn/ssl/?site=" + firstLevelDomainPunny;
     ip6Link.href = "https://ipw.cn/ipv6webcheck/?site=" + firstLevelDomainPunny;
