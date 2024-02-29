@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>LZC.app</title>
+
+    <!--
+      - favicon
+    -->
+    <link href="/assets/images/icons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+    <link href="/assets/images/icons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="/assets/images/icons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+    <link href="/assets/images/icons/site.webmanifest" rel="manifest">
+    <link color="#5bbad5" href="/assets/images/icons/safari-pinned-tab.svg" rel="mask-icon">
+    <link href="/assets/images/icons/favicon.ico" rel="shortcut icon">
+    <meta content="LZC.app" name="apple-mobile-web-app-title">
+    <meta content="LZC.app" name="application-name">
+    <meta content="#da532c" name="msapplication-TileColor">
+    <meta content="/assets/images/icons/mstile-144x144.png" name="msapplication-TileImage">
+    <meta content="/assets/images/icons/browserconfig.xml" name="msapplication-config">
+    <meta content="#ffffff" name="theme-color">
+
+    <!--
+      - Font CSS Link
+    -->
+    <link href="./assets/css/fonts.css?t=1701442466" rel="stylesheet">
+
+    <!--
+      - CSS link
+    -->
+    <link href="./assets/css/style.css?t=1706165730" rel="stylesheet">
+
+    <!--
+      - Font Awesome
+     -->
+    <!--suppress JSUnresolvedLibraryURL -->
+    <link href="https://static.lzc.app/fontawesome/css/fontawesome.css?t=1700667445" rel="stylesheet">
+    <!--suppress JSUnresolvedLibraryURL -->
+    <link href="https://static.lzc.app/fontawesome/css/all.css?t=1700667445" rel="stylesheet">
+</head>
+<body>
+
+<!--
+  - #MAIN
+-->
+<main>
+    <!--
+      - #SIDEBAR
+    -->
+    <aside class="sidebar" data-sidebar>
+        <div class="sidebar-info">
+            <figure class="avatar-box">
+                <!--suppress CheckImageSize -->
+                <img alt="LZC.app" src="./assets/images/my-avatar.png" width="80">
+            </figure>
+            <div class="info-content">
+                <h1 class="name" title="Laurence L.">Laurence L.</h1>
+                <!--<p class="title">Rainy Summer</p>-->
+            </div>
+            <button class="info_more-btn" data-sidebar-btn>
+                <span>Show Contacts</span>
+                <i class="fa-light fa-chevron-down"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-info_more">
+            <div class="separator"></div>
+            <ul class="contacts-list">
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fa-light fa-blog"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Blog</p>
+                        <a class="contact-link" href="https://blog.lzc.app" target="_blank">blog.lzc.app</a>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fa-light fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Email</p>
+                        <a class="contact-link" href="mailto:hi@lzc.app">hi@lzc.app</a>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">GitHub</p>
+                        <a class="contact-link" href="https://github.com/lzcapp" target="_blank">lzcapp</a>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-steam"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Steam</p>
+                        <a class="contact-link" href="https://steamcommunity.com/id/lzcapp" target="_blank">lzcapp</a>
+                    </div>
+                </li>
+
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fa-brands fa-500px"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">500px</p>
+                        <a class="contact-link" href="https://500px.com/p/lzc" target="_blank">lzc</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <!--
+      - #main-content
+    -->
+    <div class="main-content">
+        <!--
+          - #NAVBAR
+        -->
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li class="navbar-item">
+                    <button class="navbar-link  active" data-nav-link>About</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Resume</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Friends</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Sites</button>
+                </li>
+            </ul>
+        </nav>
+
+        <!--
+          - #ABOUT
+        -->
+        <article class="about active" data-page="about">
+            <header>
+                <h2 class="h2 article-title">About me</h2>
+            </header>
+            <section class="about-text">
+                <p>
+                    Computer Science, Web, Programming... Domain enthusiast
+                    <br>
+                    <br>
+                    <i class="fa-light fa-heart"></i>&ensp;C#
+                </p>
+                <p>
+                    <span class="inline-span"><i class="fa-light fa-key"></i>&ensp;GPG:&ensp;
+                        <a href="https://keyserver.ubuntu.com/pks/lookup?search=F617079276DFBFBD&fingerprint=on&op=index"
+                           target="_blank">F617<span class="space"></span>0792<span class="space"></span>76DF<span
+                                class="space"></span>BFBD</a>
+                        &emsp;LZC.app CA:&ensp;
+                        <a target="_blank">6200<span class="space"></span>BBCA<span class="space"></span>D00F<span
+                                class="space"></span>D4CA</a>
+                    </span>
+                </p>
+            </section>
+
+            <!--
+              - service
+            -->
+            <section class="service">
+                <h3 class="h3 service-title">What I'm doing</h3>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img alt="Web development icon" src="./assets/images/icon-dev.svg" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Software Development</h4>
+                            <p class="service-item-text">
+                                <i class="fa-light fa-heart"></i>&ensp;Visual Basic, C# on .NET …
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img alt="mobile app icon" src="./assets/images/icon-app.svg" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Mobile apps</h4>
+                            <p class="service-item-text">
+                                <a href="https://play.google.com/store/apps/dev?id=4630352006372562183" target="_blank">
+                                    <i class="fa-brands fa-google-play"></i>
+                                </a>
+                                Self-taught Android developer.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img alt="camera icon" src="./assets/images/icon-photo.svg" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Photography</h4>
+                            <p class="service-item-text">
+                                Owns a Polaroid Sun 600 LMS and Minolta X-700.
+                                <br>
+                                Wishes for a mirrorless camera.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img alt="design icon" src="./assets/images/icon-design.svg" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Others</h4>
+                            <p class="service-item-text">
+                                Build my own PCs, Movies & Musics, Books, Games …
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+
+            <p class="service-item-text" id="home-footer">
+                <span id="icpSpan" style="display: inline">
+                    <i class="fa-light fa-shield-check"></i>&ensp;<a href="" id="icpLink"></a>
+                    <span id="plcSpan" style="display: inline">
+                        <span class="divider">/</span>
+                        <!--suppress CheckImageSize -->
+                        <img alt="" id="plcIcon" src="/assets/images/备案图标.png" style="display: inline" width="13px">&ensp;<a
+                            href="#" id="plcLink" rel="noreferrer" target="_blank">#</a>
+                    </span>
+                    <span class="divider">/</span>
+                </span>
+                <a href="https://ipw.cn/ssl/?site=seeleo.com" id="sslLink" target='_blank' title="本站支持SSL安全访问">
+                    <i class="fa-light fa-lock"></i>&ensp;SSL</a>
+                <span id="ip6Span" style="display: inline">
+                    <span class="divider">/</span>
+                    <a href="https://ipw.cn/ipv6webcheck/?site=seeleo.com" id="ip6Link" target='_blank'
+                       title="本站支持IPv6访问">
+                        <i class="fa-light fa-award"></i>&ensp;IPv6</a>
+                    <a class="hide" href="https://mastodon.social/@lzc" rel="me">Mastodon</a>
+                </span>
+            </p>
+        </article>
+
+        <!--
+          - #RESUME
+        -->
+        <article class="resume" data-page="resume">
+            <header>
+                <h2 class="h2 article-title">Resume</h2>
+            </header>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fa-light fa-books"></i>
+                    </div>
+                    <h3 class="h3">Education</h3>
+                </div>
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">University of Nottingham</h4>
+                        <span>2020 — 2021</span>
+                        <p class="timeline-text">
+                            Human–computer interaction (HCI)
+                        </p>
+                    </li>
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Beijing Normal University & Hong Kong Baptist University
+                            United International College</h4>
+                        <span>2016 — 2020</span>
+                        <p class="timeline-text">
+                            B.S. in Computer Science and Technology
+                        </p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Hong Kong Baptist University</h4>
+                        <span>Summer of 2012</span>
+                        <p class="timeline-text">
+                            Summer Course: You and Your Health
+                        </p>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fa-light fa-briefcase"></i>
+                    </div>
+                    <h3 class="h3">Experience</h3>
+                </div>
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">ITran Information System Co., Ltd.</h4>
+                        <span>2023 — Present</span>
+                        <p class="timeline-text">
+                            .NET Software Development Engineer
+                        </p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">UICHCC (UIC Homebrew Computer Club)</h4>
+                        <span>2016 — Present</span>
+                        <p class="timeline-text">
+                            Founder / Secretary
+                        </p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">TEDxUIC</h4>
+                        <span>2017 — 2020</span>
+                        <p class="timeline-text">
+                            Technical Team Leader / Stage Manager
+                        </p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">China Everbright Bank Co., Ltd.</h4>
+                        <span>Summer of 2018</span>
+                        <p class="timeline-text">
+                            Intern
+                        </p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Computer Science Professional Association, UIC</h4>
+                        <span>2017 — 2018</span>
+                        <p class="timeline-text">
+                            Cabinet Secretary
+                        </p>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fa-light fa-download"></i>
+                    </div>
+                    <h3 class="h3">Downloads</h3>
+                </div>
+
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <a href="./assets/pdf/罗子琛.pdf" target="_blank">
+                            <h5 class="timeline-text resume"><i class="fa-light fa-file-pdf"></i>
+                                Resume (Simplified Chinese)
+                            </h5>
+                        </a>
+                    </li>
+
+                    <li class="timeline-item">
+                        <a href="./assets/pdf/Zichen LUO.pdf" target="_blank">
+                            <h5 class="timeline-text resume"><i class="fa-light fa-file-pdf"></i>
+                                Resume (English)
+                            </h5>
+                        </a>
+                    </li>
+                </ol>
+            </section>
+        </article>
+
+
+        <!--
+          - #Friends
+        -->
+
+        <article class="friends" data-page="friends">
+            <header>
+                <h2 class="h2 article-title">Friends</h2>
+            </header>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fa-light fa-user-group"></i>
+                    </div>
+                    <h3 class="h3">My Friends</h3>
+                </div>
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">DRJ</h4>
+                        <span><a href="https://www.drjchn.com/" target="_blank">drjchn.com</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Junde Yhi</h4>
+                        <span><a href="https://www.yhi.moe/" target="_blank">yhi.moe</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">ECWU</h4>
+                        <span><a href="https://ecwuuuuu.com/" target="_blank">ecwuuuuu.com</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Terence Liu</h4>
+                        <span><a href="https://blog.cklau.cc/" target="_blank">blog.cklau.cc</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Kaeto</h4>
+                        <span><a href="https://steamcommunity.com/id/ACEHOLEKaeto/"
+                                 target="_blank">Steam: ACEHOLEKaeto</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Harkerbest</h4>
+                        <span><a href="https://www.harkerbest.cn/"
+                                 target="_blank">harkerbest.cn</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Steven</h4>
+                        <span><a href="https://blog.steven53.top/"
+                                 target="_blank">blog.steven53.top</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">黑墨水鱼</h4>
+                        <span><a href="https://aquarium39.moe/"
+                                 target="_blank">aquarium39.moe</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Hao_Tian</h4>
+                        <span><a href="https://www.haotian22.top/"
+                                 target="_blank">haotian22.top</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+                </ol>
+            </section>
+        </article>
+
+
+        <!--
+          - #Sites
+        -->
+        <article class="sites" data-page="sites">
+            <header>
+                <h2 class="h2 article-title">Sites & Services</h2>
+            </header>
+
+            <h3 class="h3 form-title">Status Page</h3>
+            <section class="mapbox" data-mapbox>
+                <figure>
+                    <!--suppress HtmlDeprecatedAttribute -->
+                    <iframe loading="lazy" scrolling="no" src="https://status.lzc.app/"></iframe>
+                </figure>
+            </section>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fa-light fa-earth-asia"></i>
+                    </div>
+                    <h3 class="h3">Domains</h3>
+                </div>
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><a href="https://lzc.app" target="_blank">lzc.app</a></h4>
+                        <span></span>
+                        <p class="timeline-text"># This Site</p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><a href="https://seeleo.com" target="_blank">seeleo.com</a>
+                        </h4>
+                        <h4 class="h4 timeline-item-title"><a href="https://seeleo.cn" target="_blank">seeleo.cn</a>
+                        </h4>
+                        <span></span>
+                        <p class="timeline-text">"Seele + O" or "See + Leo"</p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><a href="https://ok.ac.cn" target="_blank">ok.ac.cn</a></h4>
+                        <span></span>
+                        <p class="timeline-text">"*.ac.cn" is the domain for Chinese research institutions</p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><a href="https://ba.sh.cn" target="_blank">ba.sh.cn</a></h4>
+                        <span></span>
+                        <p class="timeline-text">"Bash"</p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><a href="https://орро.com" target="_blank">орро.com</a></h4>
+                        <span></span>
+                        <p class="timeline-text">Fake OPPO site for demonstration of IDN homograph attack</p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><a href="https://longlive.su" target="_blank">longlive.su</a>
+                        </h4>
+                        <span></span>
+                        <p class="timeline-text">Long Live the Soviet Union</p>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fa-light fa-gear"></i>
+                    </div>
+                    <h3 class="h3">Services</h3>
+                </div>
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><i class="fa-light fa-key fa-fw"></i>&ensp;KMS</h4>
+                        <span><a>kms.lzc.app</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><i class="fa-light fa-clock fa-fw"></i>&ensp;NTP</h4>
+                        <span><a>ntp.lzc.app</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title"><i class="fa-light fa-code-branch fa-fw"></i>&ensp;Git
+                            (Gitea)</h4>
+                        <span><a href="https://git.lzc.app/" target="_blank">git.lzc.app</a></span>
+                        <p class="timeline-text"></p>
+                    </li>
+                </ol>
+            </section>
+        </article>
+    </div>
+</main>
+
+<!--
+  - custom js link
+-->
+<script src="./assets/js/script.js?t=1697100688"></script>
+<script src="./assets/js/punycode.js?t=1697100688"></script>
+
+<!--
+  -  inline js
+-->
+<!--suppress HttpUrlsUsage -->
+<script>
+    const hostname = window.location.hostname;
+    let firstLevelDomainPunny = hostname.split('.').slice(-2).join('.').toLowerCase();
+    let firstLevelDomain = punycode.toUnicode(firstLevelDomainPunny);
+
+    let icpLink = document.getElementById("icpLink");
+    let icpSpan = document.getElementById("icpSpan");
+    let plcSpan = document.getElementById("plcSpan");
+    let plcLink = document.getElementById("plcLink");
+    let sslLink = document.getElementById("sslLink");
+    let ip6Span = document.getElementById("ip6Span");
+    let ip6Link = document.getElementById("ip6Link");
+
+    icpLink.target = "_blank";
+
+    if (firstLevelDomain.includes("罗子琛.网址") || firstLevelDomainPunny.includes("xn--i8sw09cq3h.xn--ses554g")) {
+        document.title = "罗子琛.网址";
+        icpLink.href = "https://beian.miit.gov.cn/";
+        icpLink.innerText = "粤ICP备2023142758号-1";
+        plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483717";
+        plcLink.innerText = "粤公网安备44011102483717";
+    } else if (firstLevelDomain.includes("seeleo.com")) {
+        document.title = "SEELEO.com";
+        icpLink.href = "https://beian.miit.gov.cn/";
+        icpLink.innerText = "粤ICP备2023142758号-2";
+        plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483728";
+        plcLink.innerText = "粤公网安备44011102483728";
+    } else {
+        document.title = firstLevelDomain;
+        icpSpan.style.display = "none";
+        plcSpan.style.display = "none";
+        ip6Span.style.display = "none";
+    }
+
+    sslLink.href = "https://ipw.cn/ssl/?site=" + firstLevelDomainPunny;
+    ip6Link.href = "https://ipw.cn/ipv6webcheck/?site=" + firstLevelDomainPunny;
+
+    document.title = firstLevelDomain;
+
+    console.log(`
+                                  $$$X       &$$
+                                $x$      &$
+                         &&$$$$$$$$&$$$$$$
+                     $$$$$$$$$$$$$$XxX$Xxx$$$
+                   X$$$$$$$X$$$$$$$XXXXXXxXXX$$
+                 $$&$$$$$$$$$$$$$$$XXXXXXXXXXxxX$
+                $&$$$$$$X$$$$$$$$$$X$XXXX$XXXXxxxXx
+              X$&$$$$$XX$$$xXxx$$x;;;;;;;xxxxxxxx+x$
+              &&$$$$$$$$$$XX$$X$$XXxxxxxxx$xxxxxxx+xx
+             $&$$$$$$$$&$$$$$$$XXXXXXXXXxxXxxxxxxx+;+X
+           x&&$$$$$$$$&$$$$$$$$$$XXXXXXXXx$xxxxxxx+;;+X$
+          $&&&$$&$$$$$$$$$$$x;$$$$$$$XXXxx&Xxxxxxxx;+x++xXXxxxx
+       X$$&$$$$&$$$$$$$$$$$$x;x$$$$$$xXXxxxxxxxxxxx;;x++xx++xx
+     XXX $$&$&$&x$$$$$$&xxx$$xx$$$$$$xxXXX+;xxxxxx;+;x;;xX&$
+        $$$&$&$XxX$$$$$&$&$$$$&x$$$$$xxxxxx$$$$xxx;+;+++;+x
+       $&$&$&$&x$X$$$&&&x$XxXXx+x$$$$xX$$$$$$x$$x++;+x++++xx
+      $&& &&$&$X$&X$$$$&x;xx;x;;;x$$Xx+;xxxxx+x$x+;+x++x++++
+      $$  $$$$&$&$$x$$&&$$x;;;;;;+;;;;;;$;+x:;xX;xXx;x++;;++
+      $X  $$&&$&$$&$$$$$$x;;;;;;;;;;;;::::;;+xX$$xxx++X+;;xxx
+      $  $$$&$&$&$$$$$$$$$+;;;;;;;;;;:;:;x+x+$Xxxxx;++xx;+xxx
+      X   $$$&$&$$$&$$&$$$$$$+;;;;;;;;:::;:xXxxxxx$x++xX;x xx
+          $$$$$$$$$$$&$$$xX$$&x;;;;;;:;;x$xxxxxxxx x+x$$X  x
+           $$   $$$$$$$$$$xXX$xX&&x+x$Xxxxxxxxxx$  x+$$
+                  $ &$$X$$$$Xx$xxX$x;$xXxxx$$&&X&& $ $
+               x$&&Xxxx$&X$xx&Xxx++;;X$x$$$$x;;;;:Xxx$
+              Xx;;++;;;+;x$&Xxxx++x;;+;;+xX$;;;;;;+;;x$
+              $&X+;x++;;+$$$xxxxxxXxx+++++X$$:;;;+;::xx$
+              $XxX;;x++;x$$x;++xxxxx+$+;;;X$$+;x;;:;$xx
+              Xx+xx;;;x;$$X;;;;;;;+;;;;;;;;X$$$;::;;;;:$
+              Xx+++;+;x$&$$;;;;;;xx;xx;;;;;x$$$;Xx+;:;:+
+              X+;;;;x$$$$&$;;;;;;;xxX;;;;;xx&$$&&x;::::;
+              x+;;;;;;$&&$&&x;;;;;:;;;++;;+&$$X$&X:::::;
+              x+;;;+;&&$$$&$&$x++;;;;+;;x$$$$$$$$X$x;;:;
+             $&xx+++$$$$$$$$$&&$x;;+x;+x$$$$$$$$$$XX++:x$
+           xXxxxxxxX&$$$$$&&&&&&&$x;;x$$$$$$$$$$$$$$$;+;x;+
+            xxX$xxx$&$$$$&&&&&&&&&&xx$$&&$&$$$$$$$$$xx:;;x
+    `);
+    console.log(`
+
+    ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
+    ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝
+    ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗
+    ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝
+    ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗
+    ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+
+    `)
+    console.log(`
+
+    Welcome to ${firstLevelDomain}!
+
+    `);
+</script>
+
+</body>
+</html>
