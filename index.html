@@ -236,13 +236,7 @@
 
             <p class="service-item-text" id="home-footer">
                 <span id="icpSpan" style="display: inline">
-                    <i class="fa-light fa-shield-check"></i>&ensp;<a href="" id="icpLink"></a>
-                    <span id="plcSpan" style="display: inline">
-                        <span class="divider">/</span>
-                        <!--suppress CheckImageSize -->
-                        <img alt="" id="plcIcon" src="/assets/images/备案图标.png" style="display: inline" width="13px">&ensp;<a
-                            href="#" id="plcLink" rel="noreferrer" target="_blank">#</a>
-                    </span>
+                    <i class="fa-light fa-shield-check"></i>&ensp;<a href="https://icp.gov.moe/?keyword=lzc.app" id="icpLink">萌ICP备20232302号</a>
                     <span class="divider">/</span>
                 </span>
                 <a href="https://ipw.cn/ssl/?site=www.lzc.app" id="sslLink" target='_blank' title="本站支持SSL安全访问">
@@ -557,39 +551,9 @@
 </main>
 
 <!--
-  - custom js link
--->
-<script src="./assets/js/script.js?t=1697100688"></script>
-<script src="./assets/js/punycode.js?t=1697100688"></script>
-
-<!--
   -  inline js
 -->
-<!--suppress HttpUrlsUsage -->
 <script>
-    const hostname = window.location.hostname;
-    let firstLevelDomainPunny = hostname.split('.').slice(-2).join('.').toLowerCase();
-    let firstLevelDomain = punycode.toUnicode(firstLevelDomainPunny);
-
-    let icpLink = document.getElementById("icpLink");
-    let icpSpan = document.getElementById("icpSpan");
-    let plcSpan = document.getElementById("plcSpan");
-    let plcLink = document.getElementById("plcLink");
-    let sslLink = document.getElementById("sslLink");
-    let ip6Span = document.getElementById("ip6Span");
-    let ip6Link = document.getElementById("ip6Link");
-
-    icpLink.target = "_blank";
-
-    document.title = firstLevelDomain;
-    icpSpan.style.display = "none";
-    plcSpan.style.display = "none";
-
-    sslLink.href = "https://ipw.cn/ssl/?site=" + firstLevelDomainPunny;
-    ip6Link.href = "https://ipw.cn/ipv6webcheck/?site=" + firstLevelDomainPunny;
-
-    document.title = firstLevelDomain;
-
     console.log(`
                                   $$$X       &$$
                                 $x$      &$
