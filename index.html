@@ -594,7 +594,8 @@
         plcLink.innerText = "粤公网安备44011102483728";
     } else if (firstLevelDomain.includes("lzc.app")) {
         document.title = "LZC.app";
-        icpSpan.style.display = "none";
+        icpLink.href = "https://icp.gov.moe/?keyword=lzc.app";
+        icpLink.innerText = "萌ICP备20232302号";
         plcSpan.style.display = "none";
     } else {
         document.title = firstLevelDomain;
