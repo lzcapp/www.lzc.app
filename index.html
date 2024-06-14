@@ -592,6 +592,10 @@
         icpLink.innerText = "粤ICP备2023142758号-2";
         plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483728";
         plcLink.innerText = "粤公网安备44011102483728";
+    } else if (firstLevelDomain.includes("lzc.app")) {
+        document.title = "LZC.app";
+        icpSpan.style.display = "none";
+        plcSpan.style.display = "none";
     } else {
         document.title = firstLevelDomain;
         icpSpan.style.display = "none";
