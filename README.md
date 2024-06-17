@@ -6,4 +6,4 @@
 
 # Webhook
 
-![](https://github.com/lzcapp/www.lzc.app/assets/12462465/108ad67b-c4cc-4ea1-86a2-a702d264888a)
+![](https://github.com/lzcapp/www.lzc.app/assets/12462465/81cbed39-bad9-4ec7-b14d-96ccd5cbb0de)
