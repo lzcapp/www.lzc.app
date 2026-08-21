@@ -440,4 +440,10 @@ const punycode = {
     'toUnicode': toUnicode
 };
 
-module.exports = punycode;
+// UMD-style export: CommonJS for Node, global for browsers
+if (typeof module === 'object' && module.exports) {
+    module.exports = punycode;
+}
+if (typeof window !== 'undefined') {
+    window.punycode = punycode;
+}

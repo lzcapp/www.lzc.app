@@ -1,1 +1,5 @@
 **/.idea/**
+
+# local previews & workbuddy data
+.preview/
+.workbuddy/

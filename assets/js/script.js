@@ -1,151 +1,124 @@
 'use strict';
 
+/* ====================================
+   Helpers
+==================================== */
+const elementToggleFunc = (elem) => elem.classList.toggle('active');
 
-// element toggle function
-const elementToggleFunc = function (elem) {
-    elem.classList.toggle("active");
+/* ====================================
+   Sidebar (mobile contacts accordion)
+==================================== */
+const sidebar = document.querySelector('[data-sidebar]');
+const sidebarBtn = document.querySelector('[data-sidebar-btn]');
+
+if (sidebarBtn && sidebar) {
+    sidebarBtn.addEventListener('click', () => {
+        elementToggleFunc(sidebar);
+        sidebarBtn.setAttribute('aria-expanded', sidebar.classList.contains('active') ? 'true' : 'false');
+    });
 }
 
+/* ====================================
+   Page navigation (About / Resume / Friends / Sites)
+==================================== */
+const navigationLinks = document.querySelectorAll('[data-nav-link]');
+const pages = document.querySelectorAll('[data-page]');
+const PAGE_ORDER = ['about', 'resume', 'friends', 'sites'];
 
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+const btnPageName = (btn) => btn.textContent.trim().toLowerCase();
 
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () {
-    elementToggleFunc(sidebar);
+function setActivePage(pageName) {
+    let activeEl = null;
+
+    pages.forEach((page) => {
+        const match = page.dataset.page === pageName;
+        page.classList.toggle('active', match);
+        if (match) activeEl = page;
+    });
+
+    navigationLinks.forEach((btn) => {
+        const match = btnPageName(btn) === pageName;
+        btn.classList.toggle('active', match);
+        btn.setAttribute('aria-selected', match ? 'true' : 'false');
+    });
+
+    if (activeEl) {
+        // jump to top instantly when switching panels
+        window.scrollTo(0, 0);
+        resetReveals(activeEl);
+    }
+}
+
+navigationLinks.forEach((btn) => {
+    btn.addEventListener('click', () => setActivePage(btnPageName(btn)));
 });
 
-
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-    modalContainer.classList.toggle("active");
-    overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-    testimonialsItem[i].addEventListener("click", function () {
-
-        modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-        modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-        modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-        modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-        testimonialsModalFunc();
-
-    });
-
-}
-
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-    selectItems[i].addEventListener("click", function () {
-
-        let selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
-        elementToggleFunc(select);
-        filterFunc(selectedValue);
-
-    });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-
-    for (let i = 0; i < filterItems.length; i++) {
-
-        if (selectedValue === "all") {
-            filterItems[i].classList.add("active");
-        } else if (selectedValue === filterItems[i].dataset.category) {
-            filterItems[i].classList.add("active");
-        } else {
-            filterItems[i].classList.remove("active");
+/* ====================================
+   Scroll reveal (IntersectionObserver)
+==================================== */
+const revealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            obs.unobserve(entry.target);
         }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
 
+function resetReveals(container) {
+    // panels that are hidden cannot intersect — clear them so they animate again later
+    pages.forEach((page) => {
+        if (page !== container) {
+            page.querySelectorAll('.reveal').forEach((el) => {
+                el.classList.remove('in');
+                revealObserver.unobserve(el);
+            });
+        }
+    });
+
+    // (re)observe the visible panel's reveals; ones already in viewport fire immediately
+    container.querySelectorAll('.reveal').forEach((el) => {
+        if (!el.classList.contains('in')) revealObserver.observe(el);
+    });
+}
+
+/* ====================================
+   Keyboard navigation (← / →)
+==================================== */
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+
+    const activeBtn = document.querySelector('.navbar-link.active');
+    if (!activeBtn) return;
+
+    const activeIdx = PAGE_ORDER.indexOf(btnPageName(activeBtn));
+    if (activeIdx === -1) return;
+
+    // only handle when focus is on the page chrome, not inside text/iframe
+    const tag = document.activeElement ? document.activeElement.tagName : '';
+    if (['INPUT', 'TEXTAREA', 'SELECT', 'IFRAME'].includes(tag)) return;
+
+    const dir = e.key === 'ArrowRight' ? 1 : -1;
+    const nextName = PAGE_ORDER[(activeIdx + dir + PAGE_ORDER.length) % PAGE_ORDER.length];
+    const nextBtn = [...navigationLinks].find((b) => btnPageName(b) === nextName);
+
+    if (nextBtn) {
+        e.preventDefault();
+        setActivePage(nextName);
+        nextBtn.focus({ preventScroll: true });
     }
+});
 
+/* ====================================
+   Init
+==================================== */
+function init() {
+    const activePage = document.querySelector('article.active');
+    if (activePage) resetReveals(activePage);
 }
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
-
-for (let i = 0; i < filterBtn.length; i++) {
-
-    filterBtn[i].addEventListener("click", function () {
-
-        let selectedValue = this.innerText.toLowerCase();
-        selectValue.innerText = this.innerText;
-        filterFunc(selectedValue);
-
-        lastClickedBtn.classList.remove("active");
-        this.classList.add("active");
-        lastClickedBtn = this;
-
-    });
-
-}
-
-
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-    formInputs[i].addEventListener("input", function () {
-
-        // check form validation
-        if (form.checkValidity()) {
-            formBtn.removeAttribute("disabled");
-        } else {
-            formBtn.setAttribute("disabled", "");
-        }
-
-    });
-}
-
-
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-    navigationLinks[i].addEventListener("click", function () {
-
-        for (let i = 0; i < pages.length; i++) {
-            if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-                pages[i].classList.add("active");
-                navigationLinks[i].classList.add("active");
-                window.scrollTo(0, 0);
-            } else {
-                pages[i].classList.remove("active");
-                navigationLinks[i].classList.remove("active");
-            }
-        }
-
-    });
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
 }
