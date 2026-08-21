@@ -10,8 +10,9 @@
     <meta name="keywords" content="Laurence L, LZC, software developer, .NET, Android, photography">
     <meta name="author" content="Laurence L.">
     <meta name="robots" content="index, follow">
-    <meta name="color-scheme" content="dark">
-    <meta name="theme-color" content="#0b0b12">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#0c0c11" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
     <link rel="canonical" href="https://lzc.app/">
 
     <!-- Favicon / Icons -->
@@ -28,6 +29,23 @@
     <meta name="msapplication-TileColor" content="#0b0b12">
     <meta name="msapplication-TileImage" content="/assets/images/icons/mstile-144x144.png">
     <meta name="msapplication-config" content="/assets/images/icons/browserconfig.xml">
+
+    <!-- Theme bootstrap — runs before CSS to avoid a flash of wrong theme.
+         Priority: localStorage (user choice) > URL ?theme= > system preference. -->
+    <script>
+        (function () {
+            var saved = null;
+            try { saved = localStorage.getItem('lzc-theme'); } catch (e) {}
+            var t = saved === 'light' || saved === 'dark' ? saved : null;
+            if (!t) {
+                var q = new URLSearchParams(location.search).get('theme');
+                if (q === 'light' || q === 'dark') t = q;
+            }
+            if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+            if (!saved && !q) document.documentElement.setAttribute('data-theme-auto', '');
+        })();
+    </script>
 
     <!-- Progressive enhancement: flags JS availability before CSS applies -->
     <script>document.documentElement.classList.add('js');</script>
@@ -72,10 +90,10 @@
     <link rel="dns-prefetch" href="https://status.seeleo.com">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="./assets/css/fonts.css?v=2">
+    <link rel="stylesheet" href="./assets/css/fonts.css?v=3">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=2">
+    <link rel="stylesheet" href="./assets/css/style.css?v=3">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://static.lzc.app/fontawesome/css/all.min.css">
@@ -171,6 +189,11 @@
                     </li>
                     <li class="navbar-item" role="none">
                         <button class="navbar-link" data-nav-link role="tab" aria-selected="false" type="button">Sites</button>
+                    </li>
+                    <li class="navbar-item" role="none">
+                        <button class="theme-toggle" data-theme-toggle type="button" aria-label="切换主题（当前自动）" title="切换主题：自动 / 亮色 / 暗色">
+                            <i class="fa-light fa-adjust fa-fw" aria-hidden="true"></i>
+                        </button>
                     </li>
                 </ul>
             </nav>
@@ -607,8 +630,8 @@
     </main>
 
     <!-- Scripts -->
-    <script src="./assets/js/punycode.js?v=2"></script>
-    <script src="./assets/js/script.js?v=2"></script>
+    <script src="./assets/js/punycode.js?v=3"></script>
+    <script src="./assets/js/script.js?v=3"></script>
 
     <!--
       - Site / ICP / SSL / IPv6 logic (per-domain)

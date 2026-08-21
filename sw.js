@@ -7,14 +7,14 @@
 */
 'use strict';
 
-const VERSION = 'v2.0.0';
+const VERSION = 'v3.0.0';
 const CACHE_NAME = 'lzc-app-' + VERSION;
 
 const CORE_ASSETS = [
-    './assets/css/style.css?v=2',
-    './assets/css/fonts.css?v=2',
-    './assets/js/script.js?v=2',
-    './assets/js/punycode.js?v=2',
+    './assets/css/style.css?v=3',
+    './assets/css/fonts.css?v=3',
+    './assets/js/script.js?v=3',
+    './assets/js/punycode.js?v=3',
     './assets/images/my-avatar.png'
 ];
 
