@@ -493,7 +493,7 @@
             <span class="badge" id="plcSpan">
                 <a href="#" id="plcLink" rel="noreferrer" target="_blank"><img alt="icp" id="plcIcon" src="/assets/images/备案图标.png" width="13" height="13" loading="lazy"><span id="plcText"></span></a>
             </span>
-            <a class="badge" id="sslLink" href="https://ipw.cn/ssl/?site=seeleo.com" title="本站支持SSL安全访问" target="_blank" rel="noopener">
+            <a class="badge" id="sslLink" href="https://myssl.com/lzc.app?domain=seeleo.com&port=443" title="本站支持SSL安全访问" target="_blank" rel="noopener">
                 <i class="fa-light fa-lock fa-fw" aria-hidden="true"></i>SSL
             </a>
             <span class="badge" id="ip6Span">
@@ -557,7 +557,7 @@
                 ip6Span.style.display = "none";
             }
 
-            sslLink.href = "https://ipw.cn/ssl/?site=" + firstLevelDomainPunny;
+            sslLink.href = "https://myssl.com/lzc.app?domain=" + firstLevelDomainPunny + "&port=443";
             ip6Link.href = "https://www.tcptest.cn/ping_ipv6/" + firstLevelDomainPunny;
 
             // keep the descriptive title on local dev; otherwise use the domain
