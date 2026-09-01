@@ -11,9 +11,9 @@
     <meta name="author" content="Laurence L.">
     <meta name="robots" content="index, follow">
     <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#0c0c11" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
-    <link rel="canonical" href="https://lzc.app/">
+    <meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+    <link rel="canonical" href="https://www.lzc.app/">
 
     <!-- Favicon / Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png">
@@ -90,548 +90,427 @@
     <link rel="dns-prefetch" href="https://status.seeleo.com">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="./assets/css/fonts.css?v=3">
+    <link rel="stylesheet" href="./assets/css/fonts.css?v=4">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=3">
+    <link rel="stylesheet" href="./assets/css/style.css?v=4">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://static.lzc.app/fontawesome/css/all.min.css">
+    <!-- Icons (Font Awesome subset — 18 light + 4 solid, ~5KB vs ~810KB) -->
+    <link rel="stylesheet" href="./assets/fontawesome/fa-subset.css">
 </head>
 
-<body>
+<body id="top">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <main>
-        <!-- ==================== SIDEBAR ==================== -->
-        <aside class="sidebar" data-sidebar>
-            <div class="sidebar-info">
-                <figure class="avatar-box" aria-label="Avatar of Laurence L.">
-                    <img alt="LZC.app avatar" src="./assets/images/my-avatar.png" width="80" height="80" fetchpriority="high">
+    <!-- ==================== NAV (desktop: top bar) ==================== -->
+    <header class="site-nav" data-site-nav>
+        <a class="logo" href="#top" aria-label="LZC.app home">LZC.app</a>
+        <nav class="nav" aria-label="Primary">
+            <a class="nav-link active" href="#about">About</a>
+            <a class="nav-link" href="#resume">Resume</a>
+            <a class="nav-link" href="#friends">Friends</a>
+            <a class="nav-link" href="#sites">Sites</a>
+        </nav>
+        <button class="theme-toggle" data-theme-toggle type="button" aria-label="切换主题（当前自动）" title="切换主题：自动 / 亮色 / 暗色">
+            <i class="fa-light fa-adjust fa-fw" aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <button class="to-top" data-to-top type="button" aria-label="回到顶部" hidden>
+        <i class="fa-light fa-arrow-up fa-fw" aria-hidden="true"></i>
+    </button>
+
+    <main id="main-content">
+        <!-- ==================== SECTION 01 — ABOUT ==================== -->
+        <section id="about" class="section" data-page="about" aria-labelledby="about-title">
+            <div class="hero">
+                <figure class="avatar" aria-label="Avatar of Laurence L.">
+                    <img alt="LZC.app avatar" src="./assets/images/my-avatar.png" width="96" height="96" fetchpriority="high">
                 </figure>
-                <div class="info-content">
-                    <h1 class="name" title="Laurence L.">Laurence L.</h1>
-                </div>
-                <button class="info_more-btn" data-sidebar-btn type="button" aria-expanded="false" aria-controls="sidebar-more">
-                    <span>Show Contacts</span>
-                    <i class="fa-light fa-chevron-down fa-fw" aria-hidden="true"></i>
-                </button>
-            </div>
-
-            <div class="sidebar-info_more" id="sidebar-more">
-                <div class="separator" role="separator"></div>
-                <ul class="contacts-list">
-                    <li class="contact-item">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-blog fa-fw"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Blog</p>
-                            <a class="contact-link" href="https://blog.lzc.app" target="_blank" rel="noopener">blog.lzc.app</a>
-                        </div>
-                    </li>
-
-                    <li class="contact-item">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-envelope fa-fw"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Email</p>
-                            <a class="contact-link" href="mailto:&#104;&#105;&#64;&#108;&#122;&#99;&#46;&#97;&#112;&#112;">&#104;&#105;&#64;&#108;&#122;&#99;&#46;&#97;&#112;&#112;</a>
-                        </div>
-                    </li>
-
-                    <li class="contact-item">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-brands fa-github fa-fw"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">GitHub</p>
-                            <a class="contact-link" href="https://github.com/lzcapp" target="_blank" rel="noopener">lzcapp</a>
-                        </div>
-                    </li>
-
-                    <li class="contact-item">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-brands fa-steam fa-fw"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Steam</p>
-                            <a class="contact-link" href="https://steamcommunity.com/id/lzcapp" target="_blank" rel="noopener">lzcapp</a>
-                        </div>
-                    </li>
-
-                    <li class="contact-item">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-brands fa-500px fa-fw"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">500px</p>
-                            <a class="contact-link" href="https://500px.com/p/lzc" target="_blank" rel="noopener">lzc</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- ==================== MAIN CONTENT ==================== -->
-        <div class="main-content" id="main-content">
-            <nav class="navbar" aria-label="Primary">
-                <ul class="navbar-list" role="tablist">
-                    <li class="navbar-item" role="none">
-                        <button class="navbar-link active" data-nav-link role="tab" aria-selected="true" type="button">About</button>
-                    </li>
-                    <li class="navbar-item" role="none">
-                        <button class="navbar-link" data-nav-link role="tab" aria-selected="false" type="button">Resume</button>
-                    </li>
-                    <li class="navbar-item" role="none">
-                        <button class="navbar-link" data-nav-link role="tab" aria-selected="false" type="button">Friends</button>
-                    </li>
-                    <li class="navbar-item" role="none">
-                        <button class="navbar-link" data-nav-link role="tab" aria-selected="false" type="button">Sites</button>
-                    </li>
-                    <li class="navbar-item" role="none">
-                        <button class="theme-toggle" data-theme-toggle type="button" aria-label="切换主题（当前自动）" title="切换主题：自动 / 亮色 / 暗色">
-                            <i class="fa-light fa-adjust fa-fw" aria-hidden="true"></i>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- ==================== ABOUT ==================== -->
-            <article class="about active" data-page="about" role="tabpanel">
-                <header>
-                    <h2 class="h2 article-title">About me</h2>
-                </header>
-
-                <section class="about-text" aria-label="Introduction">
-                    <p>
+                <div class="hero-body">
+                    <p class="hero-meta">Est. 2012 — Guangdong, CN</p>
+                    <h1 class="hero-name">Laurence&nbsp;L.</h1>
+                    <p class="hero-intro">
                         Computer Science, Web, Programming... Domain enthusiast
-                        <br>
-                        <br>
-                        <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;Andie
+                        <span class="hero-love">
+                            <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;Andie
+                        </span>
                     </p>
-                    <p id="key">
-                        <span class="inline-span">
+                    <p class="fingerprint" id="key">
+                        <span class="fingerprint-item">
                             <i class="fa-light fa-key fa-fw" aria-hidden="true"></i>&ensp;GPG:
                             <a href="https://keyserver.ubuntu.com/pks/lookup?search=F617079276DFBFBD&fingerprint=on&op=index"
-                                target="_blank" rel="noopener">F617<span class="space"></span>0792<span class="space"></span>76DF<span class="space"></span>BFBD</a>
+                                target="_blank" rel="noopener">F617&ensp;0792&ensp;76DF&ensp;BFBD</a>
                         </span>
-                        <span class="inline-span">
+                        <span class="fingerprint-item">
                             <i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>&ensp;PDF:
                             90A5C1D81627FD687A17A4C881882DC317292932A1B1FA0FC14EBD5D3C5ED51D
                         </span>
                     </p>
-                </section>
+                </div>
+            </div>
 
-                <section class="service" aria-label="What I'm doing">
-                    <h3 class="h3 service-title">What I'm doing</h3>
-                    <ul class="service-list">
-                        <li class="service-item reveal">
-                            <div class="service-icon-box">
-                                <img alt="Web development icon" src="./assets/images/icon-dev.svg" width="40" height="40" loading="lazy">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Software Development</h4>
-                                <p class="service-item-text">
-                                    <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;C# (.NET) …
-                                </p>
-                            </div>
-                        </li>
+            <div class="section-head">
+                <span class="sec-num" aria-hidden="true">01</span>
+                <h2 class="sec-title" id="about-title">What I'm doing</h2>
+                <span class="sec-rule" aria-hidden="true"></span>
+            </div>
 
-                        <li class="service-item reveal">
-                            <div class="service-icon-box">
-                                <img alt="mobile app icon" src="./assets/images/icon-app.svg" width="40" height="40" loading="lazy">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Mobile apps</h4>
-                                <p class="service-item-text">
-                                    Self-taught Android developer.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="service-item reveal">
-                            <div class="service-icon-box">
-                                <img alt="camera icon" src="./assets/images/icon-photo.svg" width="40" height="40" loading="lazy">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Photography</h4>
-                                <p class="service-item-text">
-                                    Owns a Polaroid Sun 600 LMS.
-                                    <br>
-                                    Wishes for a mirrorless camera.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="service-item reveal">
-                            <div class="service-icon-box">
-                                <img alt="design icon" src="./assets/images/icon-design.svg" width="40" height="40" loading="lazy">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Others</h4>
-                                <p class="service-item-text">
-                                    Build my own PCs
-                                    <br>
-                                    Movies &amp; Musics, Books, Games …
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-
-                <footer class="site-footer" id="home-footer">
-                    <p class="service-item-text">
-                        <span id="icpSpan">
-                            <i class="fa-light fa-shield-check fa-fw" aria-hidden="true"></i>&ensp;<a href="" id="icpLink"></a>
-                            <span id="plcSpan">
-                                <span class="divider" aria-hidden="true">/</span>
-                                <img alt="icp" id="plcIcon" src="/assets/images/备案图标.png" width="13" height="13" loading="lazy">&ensp;<a href="#" id="plcLink" rel="noreferrer" target="_blank">#</a>
-                            </span>
-                            <span class="divider" aria-hidden="true">/</span>
-                        </span>
-                        <a id="sslLink" href="https://ipw.cn/ssl/?site=seeleo.com" title="本站支持SSL安全访问" target="_blank" rel="noopener">
-                            <i class="fa-light fa-lock fa-fw" aria-hidden="true"></i>&ensp;SSL
-                        </a>
-                        <span id="ip6Span">
-                            <span class="divider" aria-hidden="true">/</span>
-                            <a id="ip6Link" href="https://ipw.cn/ipv6webcheck/?site=seeleo.com" target="_blank" rel="noopener" title="本站支持IPv6访问">
-                                <i class="fa-light fa-award fa-fw" aria-hidden="true"></i>&ensp;IPv6
-                            </a>
-                            <a class="hide" href="https://mastodon.social/@lzc" rel="me">Mastodon</a>
-                        </span>
-                    </p>
-                </footer>
-            </article>
-
-            <!-- ==================== RESUME ==================== -->
-            <article class="resume" data-page="resume" role="tabpanel">
-                <header>
-                    <h2 class="h2 article-title">Resume</h2>
-                </header>
-
-                <section class="timeline reveal" aria-label="Education">
-                    <div class="title-wrapper">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-books fa-fw"></i>
-                        </div>
-                        <h3 class="h3">Education</h3>
+            <ul class="service-list">
+                <li class="service-item reveal">
+                    <img class="service-icon" alt="Web development icon" src="./assets/images/icon-dev.svg" width="40" height="40" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Software Development</h3>
+                        <p class="service-text">
+                            <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;C# (.NET) …
+                        </p>
                     </div>
+                </li>
+
+                <li class="service-item reveal">
+                    <img class="service-icon" alt="mobile app icon" src="./assets/images/icon-app.svg" width="40" height="40" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Mobile apps</h3>
+                        <p class="service-text">
+                            Self-taught Android developer.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="service-item reveal">
+                    <img class="service-icon" alt="camera icon" src="./assets/images/icon-photo.svg" width="40" height="40" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Photography</h3>
+                        <p class="service-text">
+                            Owns a Polaroid Sun 600 LMS.
+                            <br>
+                            Wishes for a mirrorless camera.
+                        </p>
+                    </div>
+                </li>
+
+                <li class="service-item reveal">
+                    <img class="service-icon" alt="design icon" src="./assets/images/icon-design.svg" width="40" height="40" loading="lazy">
+                    <div class="service-body">
+                        <h3 class="service-title">Others</h3>
+                        <p class="service-text">
+                            Build my own PCs
+                            <br>
+                            Movies &amp; Musics, Books, Games …
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ==================== SECTION 02 — RESUME ==================== -->
+        <section id="resume" class="section" data-page="resume" aria-labelledby="resume-title">
+            <div class="section-head">
+                <span class="sec-num" aria-hidden="true">02</span>
+                <h2 class="sec-title" id="resume-title">Resume</h2>
+                <span class="sec-rule" aria-hidden="true"></span>
+            </div>
+
+            <div class="resume-grid">
+                <div class="resume-col">
+                    <h3 class="col-title">
+                        <i class="fa-light fa-books fa-fw" aria-hidden="true"></i>&ensp;Education
+                    </h3>
                     <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">
+                        <li class="timeline-item reveal">
+                            <time class="timeline-date">2016 — 2020</time>
+                            <h4 class="timeline-title">
                                 Beijing Normal-Hong Kong Baptist University (BNBU)
                                 &ensp;<a href="https://uic.edu.cn/" target="_blank" rel="noopener" aria-label="BNBU website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <time>2016 — 2020</time>
                             <p class="timeline-text">
                                 B.S. in Computer Science and Technology
                             </p>
                         </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">
+                        <li class="timeline-item reveal">
+                            <time class="timeline-date">Summer of 2012</time>
+                            <h4 class="timeline-title">
                                 Hong Kong Baptist University
                                 &ensp;<a href="https://www.hkbu.edu.hk/" target="_blank" rel="noopener" aria-label="HKBU website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <time>Summer of 2012</time>
                             <p class="timeline-text">
                                 Summer Course: You and Your Health
                             </p>
                         </li>
                     </ol>
-                </section>
+                </div>
 
-                <section class="timeline reveal" aria-label="Experience">
-                    <div class="title-wrapper">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-briefcase fa-fw"></i>
-                        </div>
-                        <h3 class="h3">Experience</h3>
-                    </div>
+                <div class="resume-col">
+                    <h3 class="col-title">
+                        <i class="fa-light fa-briefcase fa-fw" aria-hidden="true"></i>&ensp;Experience
+                    </h3>
                     <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">
+                        <li class="timeline-item reveal">
+                            <time class="timeline-date">2023 — Present</time>
+                            <h4 class="timeline-title">
                                 ITran Information System Co., Ltd.
+                                <span class="now-badge">Now</span>
                                 &ensp;<a href="http://www.itran.com/" target="_blank" rel="noopener" aria-label="ITran website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <time>2023 — Present</time>
                             <p class="timeline-text">
                                 .NET Software Development Engineer
                             </p>
                         </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">
+                        <li class="timeline-item reveal">
+                            <time class="timeline-date">2016 — Present</time>
+                            <h4 class="timeline-title">
                                 UICHCC (UIC Homebrew Computer Club)
                                 &ensp;<a href="https://uichcc.com/" target="_blank" rel="noopener" aria-label="UICHCC website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <time>2016 — Present</time>
                             <p class="timeline-text">
                                 Founder / Secretary
                             </p>
                         </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">
+                        <li class="timeline-item reveal">
+                            <time class="timeline-date">2017 — 2020</time>
+                            <h4 class="timeline-title">
                                 TEDxUIC
                                 &ensp;<a href="https://tedxuic.com/" target="_blank" rel="noopener" aria-label="TEDxUIC website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <time>2017 — 2020</time>
                             <p class="timeline-text">
                                 Technical Team Leader / Stage Manager
                             </p>
                         </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">China Everbright Bank Co., Ltd.</h4>
-                            <time>Summer of 2018</time>
+                        <li class="timeline-item reveal">
+                            <time class="timeline-date">Summer of 2018</time>
+                            <h4 class="timeline-title">China Everbright Bank Co., Ltd.</h4>
                             <p class="timeline-text">
                                 Intern
                             </p>
                         </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Computer Science Professional Association, UIC</h4>
-                            <time>2017 — 2018</time>
+                        <li class="timeline-item reveal">
+                            <time class="timeline-date">2017 — 2018</time>
+                            <h4 class="timeline-title">Computer Science Professional Association, UIC</h4>
                             <p class="timeline-text">
                                 Cabinet Secretary
                             </p>
                         </li>
                     </ol>
-                </section>
+                </div>
+            </div>
 
-                <section class="timeline reveal" aria-label="Downloads">
-                    <div class="title-wrapper">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-download fa-fw"></i>
-                        </div>
-                        <h3 class="h3">Downloads</h3>
-                    </div>
-
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <a href="https://static.lzc.app/cv/%E7%BD%97%E5%AD%90%E7%90%9B.pdf" target="_blank" rel="noopener">
-                                <h5 class="timeline-text resume"><i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>
-                                    简历 (中文)
-                                </h5>
-                            </a>
-                        </li>
-
-                        <li class="timeline-item">
-                            <a href="https://static.lzc.app/cv/Zichen%20LUO.pdf" target="_blank" rel="noopener">
-                                <h5 class="timeline-text resume"><i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>
-                                    Resume (English)
-                                </h5>
-                            </a>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h5 class="timeline-text resume">
-                                All digitally signed with my self-signed X.509 certificate.<br>
-                                SHA256 Fingerprint: 90A5C1D81627FD687A17A4C881882DC317292932A1B1FA0FC14EBD5D3C5ED51D.
-                            </h5>
-                        </li>
-                    </ol>
-                </section>
-            </article>
-
-            <!-- ==================== FRIENDS ==================== -->
-            <article class="friends" data-page="friends" role="tabpanel">
-                <header>
-                    <h2 class="h2 article-title">Friends</h2>
-                </header>
-
-                <section class="timeline reveal" aria-label="My Love">
-                    <div class="title-wrapper">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-heart fa-fw"></i>
-                        </div>
-                        <h3 class="h3">My Love</h3>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Andie YU</h4>
-                            <span><a href="https://yad.lzc.app/" target="_blank" rel="noopener">yad.lzc.app</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-                    </ol>
-                </section>
-
-                <section class="timeline reveal" aria-label="My Friends">
-                    <div class="title-wrapper">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-user-group fa-fw"></i>
-                        </div>
-                        <h3 class="h3">My Friends</h3>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">DRJ</h4>
-                            <span><a href="https://www.drjchn.com/" target="_blank" rel="noopener">drjchn.com</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Junde Yhi</h4>
-                            <span><a href="https://www.yhi.moe/" target="_blank" rel="noopener">yhi.moe</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">ECWU</h4>
-                            <span><a href="https://ecwuuuuu.com/" target="_blank" rel="noopener">ecwuuuuu.com</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Terence Liu</h4>
-                            <span><a href="https://blog.cklau.cc/" target="_blank" rel="noopener">blog.cklau.cc</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Kaeto</h4>
-                            <span><a href="https://steamcommunity.com/id/ACEHOLEKaeto/" target="_blank" rel="noopener">Steam: ACEHOLEKaeto</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Harkerbest</h4>
-                            <span><a href="https://www.harkerbest.cn/" target="_blank" rel="noopener">harkerbest.cn</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Steven</h4>
-                            <span><a href="https://blog.steven53.top/" target="_blank" rel="noopener">blog.steven53.top</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">黑墨水鱼</h4>
-                            <span><a href="https://aquarium39.moe/" target="_blank" rel="noopener">aquarium39.moe</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">Hao_Tian</h4>
-                            <span><a href="https://www.haotian22.top/" target="_blank" rel="noopener">haotian22.top</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
-                    </ol>
-                </section>
-            </article>
-
-            <!-- ==================== SITES ==================== -->
-            <article class="sites" data-page="sites" role="tabpanel">
-                <header>
-                    <h2 class="h2 article-title">Sites &amp; Services</h2>
-                </header>
-
-                <h3 class="h3 form-title">
-                    Status Page
-                    &ensp;<a href="https://status.seeleo.com" target="_blank" rel="noopener" aria-label="Open status page"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
+            <div class="resume-col downloads">
+                <h3 class="col-title">
+                    <i class="fa-light fa-download fa-fw" aria-hidden="true"></i>&ensp;Downloads
                 </h3>
-                <section class="mapbox" data-mapbox aria-label="Service status">
-                    <figure>
-                        <iframe loading="lazy" scrolling="no" title="Status page of seeleo services" src="https://status.seeleo.com/"></iframe>
-                    </figure>
-                </section>
+                <ol class="timeline-list">
+                    <li class="timeline-item reveal">
+                        <h4 class="timeline-title">
+                            <a href="https://static.lzc.app/cv/%E7%BD%97%E5%AD%90%E7%90%9B.pdf" target="_blank" rel="noopener">
+                                <i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>&ensp;简历 (中文)
+                            </a>
+                        </h4>
+                        <p class="timeline-text"></p>
+                    </li>
 
-                <section class="timeline reveal" aria-label="Domains">
-                    <div class="title-wrapper">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-earth-asia fa-fw"></i>
-                        </div>
-                        <h3 class="h3">Domains</h3>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><a href="https://lzc.app" target="_blank" rel="noopener">lzc.app</a></h4>
-                            <span></span>
-                            <p class="timeline-text">LZC.app</p>
-                        </li>
+                    <li class="timeline-item reveal">
+                        <h4 class="timeline-title">
+                            <a href="https://static.lzc.app/cv/Zichen%20LUO.pdf" target="_blank" rel="noopener">
+                                <i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>&ensp;Resume (English)
+                            </a>
+                        </h4>
+                        <p class="timeline-text"></p>
+                    </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">
-                                <a href="https://seeleo.cn" target="_blank" rel="noopener">seeleo.cn</a>
-                                &ensp;/&ensp;
-                                <a href="https://seeleo.com" target="_blank" rel="noopener">seeleo.com</a>
-                            </h4>
-                            <span></span>
-                            <p class="timeline-text">"Seele + O" or "See + Leo"</p>
-                        </li>
+                    <li class="timeline-item reveal">
+                        <p class="timeline-text note">
+                            All digitally signed with my self-signed X.509 certificate.<br>
+                            SHA256 Fingerprint: 90A5C1D81627FD687A17A4C881882DC317292932A1B1FA0FC14EBD5D3C5ED51D.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><a href="https://ok.ac.cn" target="_blank" rel="noopener">ok.ac.cn</a></h4>
-                            <span></span>
-                            <p class="timeline-text">"*.ac.cn" is the domain for Chinese research institutions</p>
-                        </li>
+        <!-- ==================== SECTION 03 — FRIENDS ==================== -->
+        <section id="friends" class="section" data-page="friends" aria-labelledby="friends-title">
+            <div class="section-head">
+                <span class="sec-num" aria-hidden="true">03</span>
+                <h2 class="sec-title" id="friends-title">Friends</h2>
+                <span class="sec-rule" aria-hidden="true"></span>
+            </div>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><a href="https://ba.sh.cn" target="_blank" rel="noopener">ba.sh.cn</a></h4>
-                            <span></span>
-                            <p class="timeline-text">"Bash"</p>
-                        </li>
+            <h3 class="col-title">
+                <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;My Love
+            </h3>
+            <ul class="friend-list">
+                <li class="friend-item love-item reveal">
+                    <h4 class="friend-name">Andie YU</h4>
+                    <a class="friend-link" href="https://yad.lzc.app/" target="_blank" rel="noopener">yad.lzc.app</a>
+                </li>
+            </ul>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><a href="https://орро.com" target="_blank" rel="noopener">орро.com</a></h4>
-                            <span></span>
-                            <p class="timeline-text">Fake OPPO site for demonstration of <ins>IDN homograph attack</ins></p>
-                        </li>
+            <h3 class="col-title">
+                <i class="fa-light fa-user-group fa-fw" aria-hidden="true"></i>&ensp;My Friends
+            </h3>
+            <ul class="friends-grid">
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">DRJ</h4>
+                    <a class="friend-link" href="https://www.drjchn.com/" target="_blank" rel="noopener">drjchn.com</a>
+                </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title">
-                                <del>longlive.su</del>
-                                &ensp;
-                                <a href="https://github.com/lzcapp/longlive.su" target="_blank" rel="noopener"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
-                            </h4>
-                            <span><i class="fa-light fa-calendar-xmark fa-fw" aria-hidden="true"></i>&ensp;2021/03/16 - 2025/03/16</span>
-                            <p class="timeline-text">Long Live the Soviet Union</p>
-                        </li>
-                    </ol>
-                </section>
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">Junde Yhi</h4>
+                    <a class="friend-link" href="https://www.yhi.moe/" target="_blank" rel="noopener">yhi.moe</a>
+                </li>
 
-                <section class="timeline reveal" aria-label="Services">
-                    <div class="title-wrapper">
-                        <div class="icon-box" aria-hidden="true">
-                            <i class="fa-light fa-gear fa-fw"></i>
-                        </div>
-                        <h3 class="h3">Services</h3>
-                    </div>
-                    <ol class="timeline-list">
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><i class="fa-light fa-key fa-fw" aria-hidden="true"></i>&ensp;KMS</h4>
-                            <span><a>kms.lzc.app</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">ECWU</h4>
+                    <a class="friend-link" href="https://ecwuuuuu.com/" target="_blank" rel="noopener">ecwuuuuu.com</a>
+                </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><i class="fa-light fa-clock fa-fw" aria-hidden="true"></i>&ensp;NTP</h4>
-                            <span><a>ntp.lzc.app</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">Terence Liu</h4>
+                    <a class="friend-link" href="https://blog.cklau.cc/" target="_blank" rel="noopener">blog.cklau.cc</a>
+                </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><i class="fa-light fa-code-branch fa-fw" aria-hidden="true"></i>&ensp;Git (Gitea)</h4>
-                            <span><a href="https://git.seeleo.com/" target="_blank" rel="noopener">git.seeleo.com</a></span>
-                            <p class="timeline-text"></p>
-                        </li>
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">Kaeto</h4>
+                    <a class="friend-link" href="https://steamcommunity.com/id/ACEHOLEKaeto/" target="_blank" rel="noopener">Steam: ACEHOLEKaeto</a>
+                </li>
 
-                        <li class="timeline-item">
-                            <h4 class="h4 timeline-item-title"><i class="fa-solid fa-ellipsis fa-fw" aria-hidden="true"></i>&ensp;And more</h4>
-                        </li>
-                    </ol>
-                </section>
-            </article>
-        </div>
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">Harkerbest</h4>
+                    <a class="friend-link" href="https://www.harkerbest.cn/" target="_blank" rel="noopener">harkerbest.cn</a>
+                </li>
+
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">Steven</h4>
+                    <a class="friend-link" href="https://blog.steven53.top/" target="_blank" rel="noopener">blog.steven53.top</a>
+                </li>
+
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">黑墨水鱼</h4>
+                    <a class="friend-link" href="https://aquarium39.moe/" target="_blank" rel="noopener">aquarium39.moe</a>
+                </li>
+
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">Hao_Tian</h4>
+                    <a class="friend-link" href="https://www.haotian22.top/" target="_blank" rel="noopener">haotian22.top</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ==================== SECTION 04 — SITES ==================== -->
+        <section id="sites" class="section" data-page="sites" aria-labelledby="sites-title">
+            <div class="section-head">
+                <span class="sec-num" aria-hidden="true">04</span>
+                <h2 class="sec-title" id="sites-title">Sites &amp; Services</h2>
+                <span class="sec-rule" aria-hidden="true"></span>
+            </div>
+
+            <h3 class="col-title">
+                Status Page
+                &ensp;<a class="ext-link" href="https://status.seeleo.com" target="_blank" rel="noopener" aria-label="Open status page"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
+            </h3>
+            <div class="mapbox reveal" data-mapbox aria-label="Service status">
+                <iframe loading="lazy" scrolling="no" title="Status page of seeleo services" src="https://status.seeleo.com/"></iframe>
+            </div>
+
+            <h3 class="col-title">
+                <i class="fa-light fa-earth-asia fa-fw" aria-hidden="true"></i>&ensp;Domains
+            </h3>
+            <ul class="link-grid">
+                <li class="link-item reveal">
+                    <a class="link-name" href="https://lzc.app" target="_blank" rel="noopener">lzc.app</a>
+                    <span class="link-note">LZC.app</span>
+                </li>
+
+                <li class="link-item reveal">
+                    <a class="link-name" href="https://seeleo.cn" target="_blank" rel="noopener">seeleo.cn</a>
+                    <span class="link-sep" aria-hidden="true">/</span>
+                    <a class="link-name" href="https://seeleo.com" target="_blank" rel="noopener">seeleo.com</a>
+                    <span class="link-note">"Seele + O" or "See + Leo"</span>
+                </li>
+
+                <li class="link-item reveal">
+                    <a class="link-name" href="https://ok.ac.cn" target="_blank" rel="noopener">ok.ac.cn</a>
+                    <span class="link-note">"*.ac.cn" is the domain for Chinese research institutions</span>
+                </li>
+
+                <li class="link-item reveal">
+                    <a class="link-name" href="https://ba.sh.cn" target="_blank" rel="noopener">ba.sh.cn</a>
+                    <span class="link-note">"Bash"</span>
+                </li>
+
+                <li class="link-item reveal">
+                    <a class="link-name" href="https://орро.com" target="_blank" rel="noopener">орро.com</a>
+                    <span class="link-note">Fake OPPO site for demonstration of <ins>IDN homograph attack</ins></span>
+                </li>
+
+                <li class="link-item reveal">
+                    <span class="link-name dead">
+                        <del>longlive.su</del>
+                        &ensp;
+                        <a href="https://github.com/lzcapp/longlive.su" target="_blank" rel="noopener"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
+                    </span>
+                    <span class="link-note"><i class="fa-light fa-calendar-xmark fa-fw" aria-hidden="true"></i>&ensp;2021/03/16 - 2025/03/16</span>
+                    <span class="link-note">Long Live the Soviet Union</span>
+                </li>
+            </ul>
+
+            <h3 class="col-title">
+                <i class="fa-light fa-gear fa-fw" aria-hidden="true"></i>&ensp;Services
+            </h3>
+            <ul class="link-grid">
+                <li class="link-item reveal">
+                    <span class="link-name"><i class="fa-light fa-key fa-fw" aria-hidden="true"></i>&ensp;KMS</span>
+                    <span class="link-note">kms.lzc.app</span>
+                </li>
+
+                <li class="link-item reveal">
+                    <span class="link-name"><i class="fa-light fa-clock fa-fw" aria-hidden="true"></i>&ensp;NTP</span>
+                    <span class="link-note">ntp.lzc.app</span>
+                </li>
+
+                <li class="link-item reveal">
+                    <a class="link-name" href="https://git.seeleo.com/" target="_blank" rel="noopener"><i class="fa-light fa-code-branch fa-fw" aria-hidden="true"></i>&ensp;Git (Gitea)</a>
+                    <span class="link-note">git.seeleo.com</span>
+                </li>
+
+                <li class="link-item reveal">
+                    <span class="link-name"><i class="fa-solid fa-ellipsis fa-fw" aria-hidden="true"></i>&ensp;And more</span>
+                </li>
+            </ul>
+        </section>
     </main>
 
+    <footer class="site-footer" id="site-footer">
+        <p class="footer-text">
+            <span id="icpSpan">
+                <i class="fa-light fa-shield-check fa-fw" aria-hidden="true"></i>&ensp;<a href="" id="icpLink"></a>
+                <span id="plcSpan">
+                    <span class="divider" aria-hidden="true">/</span>
+                    <img alt="icp" id="plcIcon" src="/assets/images/备案图标.png" width="13" height="13" loading="lazy">&ensp;<a href="#" id="plcLink" rel="noreferrer" target="_blank">#</a>
+                </span>
+                <span class="divider" aria-hidden="true">/</span>
+            </span>
+            <a id="sslLink" href="https://ipw.cn/ssl/?site=seeleo.com" title="本站支持SSL安全访问" target="_blank" rel="noopener">
+                <i class="fa-light fa-lock fa-fw" aria-hidden="true"></i>&ensp;SSL
+            </a>
+            <span id="ip6Span">
+                <span class="divider" aria-hidden="true">/</span>
+                <a id="ip6Link" href="https://ipw.cn/ipv6webcheck/?site=seeleo.com" target="_blank" rel="noopener" title="本站支持IPv6访问">
+                    <i class="fa-light fa-award fa-fw" aria-hidden="true"></i>&ensp;IPv6
+                </a>
+                <a class="hide" href="https://mastodon.social/@lzc" rel="me">Mastodon</a>
+            </span>
+        </p>
+    </footer>
+
     <!-- Scripts -->
-    <script src="./assets/js/punycode.js?v=3"></script>
-    <script src="./assets/js/script.js?v=3"></script>
+    <script src="./assets/js/punycode.js?v=4"></script>
+    <script src="./assets/js/script.js?v=4"></script>
 
     <!--
       - Site / ICP / SSL / IPv6 logic (per-domain)
