@@ -487,22 +487,17 @@
 
     <footer class="site-footer" id="site-footer">
         <p class="footer-text">
-            <span id="icpSpan">
-                <i class="fa-light fa-shield-check fa-fw" aria-hidden="true"></i>&ensp;<a href="" id="icpLink"></a>
-                <span id="plcSpan">
-                    <span class="divider" aria-hidden="true">/</span>
-                    <img alt="icp" id="plcIcon" src="/assets/images/备案图标.png" width="13" height="13" loading="lazy">&ensp;<a href="#" id="plcLink" rel="noreferrer" target="_blank">#</a>
-                </span>
-                <span class="divider" aria-hidden="true">/</span>
+            <span class="badge" id="icpSpan">
+                <a href="" id="icpLink"><i class="fa-light fa-shield-check fa-fw" aria-hidden="true"></i><span id="icpText"></span></a>
             </span>
-            <a id="sslLink" href="https://ipw.cn/ssl/?site=seeleo.com" title="本站支持SSL安全访问" target="_blank" rel="noopener">
-                <i class="fa-light fa-lock fa-fw" aria-hidden="true"></i>&ensp;SSL
+            <span class="badge" id="plcSpan">
+                <a href="#" id="plcLink" rel="noreferrer" target="_blank"><img alt="icp" id="plcIcon" src="/assets/images/备案图标.png" width="13" height="13" loading="lazy"><span id="plcText"></span></a>
+            </span>
+            <a class="badge" id="sslLink" href="https://ipw.cn/ssl/?site=seeleo.com" title="本站支持SSL安全访问" target="_blank" rel="noopener">
+                <i class="fa-light fa-lock fa-fw" aria-hidden="true"></i>SSL
             </a>
-            <span id="ip6Span">
-                <span class="divider" aria-hidden="true">/</span>
-                <a id="ip6Link" href="https://ipw.cn/ipv6webcheck/?site=seeleo.com" target="_blank" rel="noopener" title="本站支持IPv6访问">
-                    <i class="fa-light fa-award fa-fw" aria-hidden="true"></i>&ensp;IPv6
-                </a>
+            <span class="badge" id="ip6Span">
+                <a id="ip6Link" href="https://www.tcptest.cn/ping_ipv6/seeleo.com" target="_blank" rel="noopener" title="本站支持IPv6访问"><i class="fa-light fa-award fa-fw" aria-hidden="true"></i>IPv6</a>
                 <a class="hide" href="https://mastodon.social/@lzc" rel="me">Mastodon</a>
             </span>
         </p>
@@ -534,20 +529,27 @@
             if (firstLevelDomain.includes("罗子琛.网址") || firstLevelDomainPunny.includes("xn--i8sw09cq3h.xn--ses554g")) {
                 document.title = "罗子琛.网址";
                 icpLink.href = "https://beian.miit.gov.cn/";
-                icpLink.innerText = "粤ICP备2023142758号-1";
+                icpText.textContent = "粤ICP备2023142758号-1";
                 plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483717";
-                plcLink.innerText = "粤公网安备44011102483717";
+                plcText.textContent = "粤公网安备44011102483717";
             } else if (firstLevelDomain.includes("seeleo.com")) {
                 document.title = "SEELEO.com";
                 icpLink.href = "https://beian.miit.gov.cn/";
-                icpLink.innerText = "粤ICP备2023142758号-2";
+                icpText.textContent = "粤ICP备2023142758号-2";
                 plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483728";
-                plcLink.innerText = "粤公网安备44011102483728";
+                plcText.textContent = "粤公网安备44011102483728";
             } else if (firstLevelDomain.includes("lzc.app")) {
                 document.title = "LZC.app";
                 icpLink.href = "https://icp.gov.moe/?keyword=lzc.app";
-                icpLink.innerText = "萌ICP备20232302号";
+                icpText.textContent = "萌ICP备20232302号";
                 plcSpan.style.display = "none";
+            } else if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '') {
+                // local dev: show every badge with the PSB records for easy debugging
+                document.title = "LZC.app";
+                icpLink.href = "https://beian.miit.gov.cn/";
+                icpText.textContent = "粤ICP备2023142758号-2";
+                plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483728";
+                plcText.textContent = "粤公网安备44011102483728";
             } else {
                 document.title = firstLevelDomain;
                 icpSpan.style.display = "none";
@@ -556,9 +558,12 @@
             }
 
             sslLink.href = "https://ipw.cn/ssl/?site=" + firstLevelDomainPunny;
-            ip6Link.href = "https://ipw.cn/ipv6webcheck/?site=" + firstLevelDomainPunny;
+            ip6Link.href = "https://www.tcptest.cn/ping_ipv6/" + firstLevelDomainPunny;
 
-            document.title = firstLevelDomain;
+            // keep the descriptive title on local dev; otherwise use the domain
+            if (hostname !== 'localhost' && hostname !== '127.0.0.1' && hostname !== '') {
+                document.title = firstLevelDomain;
+            }
 
             console.log("\n\n    Welcome to " + firstLevelDomain + "!\n\n");
         })();
