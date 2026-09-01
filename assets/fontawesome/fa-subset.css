@@ -38,7 +38,9 @@
 .fa-books:before{content:"\f5db"}
 .fa-briefcase:before{content:"\f0b1"}
 .fa-calendar-xmark:before{content:"\f273"}
+.fa-camera:before{content:"\f030"}
 .fa-clock:before{content:"\f017"}
+.fa-code:before{content:"\f121"}
 .fa-code-branch:before{content:"\f126"}
 .fa-download:before{content:"\f019"}
 .fa-earth-asia:before{content:"\f57e"}
@@ -47,6 +49,8 @@
 .fa-heart:before{content:"\f004"}
 .fa-key:before{content:"\f084"}
 .fa-lock:before{content:"\f023"}
+.fa-mobile-screen:before{content:"\f3cf"}
+.fa-mug-hot:before{content:"\f7b6"}
 .fa-shield-check:before{content:"\f2f7"}
 .fa-user-group:before{content:"\f500"}
 .fa-warehouse:before{content:"\f494"}
