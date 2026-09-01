@@ -792,6 +792,21 @@ main {
     color: var(--text-3);
     text-align: center;
     line-height: 2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2px 10px;
+}
+
+#icpSpan,
+#plcSpan,
+#ip6Span,
+#sslLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
 }
 
 .footer-text a {
@@ -803,7 +818,6 @@ main {
 }
 
 .divider {
-    padding: 0 6px;
     color: var(--border-strong);
 }
 
