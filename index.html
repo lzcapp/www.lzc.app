@@ -521,11 +521,10 @@
             icpLink.target = "_blank";
 
             if (firstLevelDomain.includes("罗子琛.网址") || firstLevelDomainPunny.includes("xn--i8sw09cq3h.xn--ses554g")) {
+                // 该域名已无 ICP 备案（备案号仅剩 seeleo.com），不显示备案号，避免冒用备案信息
                 document.title = "罗子琛.网址";
-                icpLink.href = "https://beian.miit.gov.cn/";
-                icpText.textContent = "粤ICP备2023142758号-1";
-                plcLink.href = "https://beian.mps.gov.cn/#/query/webSearch?code=44011102483717";
-                plcText.textContent = "粤公网安备44011102483717";
+                icpSpan.style.display = "none";
+                plcSpan.style.display = "none";
             } else if (firstLevelDomain.includes("seeleo.com")) {
                 document.title = "SEELEO.com";
                 icpLink.href = "https://beian.miit.gov.cn/";
