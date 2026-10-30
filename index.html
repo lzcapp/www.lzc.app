@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>LZC.app — Laurence L.</title>
-    <meta name="description" content="Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer. Blog, projects and more.">
+    <meta name="description" content="Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer. Blog, projects and more." data-i18n-content="meta.desc">
     <meta name="keywords" content="Laurence L, LZC, software developer, .NET, Android, photography">
     <meta name="author" content="Laurence L.">
     <meta name="robots" content="index, follow">
@@ -47,22 +47,46 @@
         })();
     </script>
 
+    <!-- Language bootstrap — decides EN / 中文 before first paint, so the copy never
+         flashes in the wrong language. Priority: localStorage > URL ?lang= > browser. -->
+    <script>
+        (function () {
+            var lang = null;
+            try { lang = localStorage.getItem('lzc-lang'); } catch (e) {}
+            if (lang !== 'en' && lang !== 'zh') {
+                var q = new URLSearchParams(location.search).get('lang');
+                if (q === 'en' || q === 'zh') lang = q;
+            }
+            if (lang !== 'en' && lang !== 'zh') {
+                var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+                var isZh = false;
+                for (var i = 0; i < list.length; i++) {
+                    if (/^zh/i.test(list[i])) { isZh = true; break; }
+                }
+                lang = isZh ? 'zh' : 'en';
+            }
+            var root = document.documentElement;
+            root.setAttribute('data-lang', lang);
+            root.setAttribute('lang', lang === 'zh' ? 'zh-CN' : 'en');
+        })();
+    </script>
+
     <!-- Progressive enhancement: flags JS availability before CSS applies -->
     <script>document.documentElement.classList.add('js');</script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lzc.app">
-    <meta property="og:locale" content="zh_CN">
+    <meta property="og:locale" content="en_US" data-i18n-content="meta.ogLocale">
     <meta property="og:site_name" content="LZC.app">
     <meta property="og:title" content="LZC.app — Laurence L.">
     <meta property="og:image" content="https://lzc.app/assets/images/my-avatar.png">
-    <meta property="og:description" content="Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer.">
+    <meta property="og:description" content="Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer." data-i18n-content="meta.ogDesc">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="LZC.app — Laurence L.">
-    <meta name="twitter:description" content="Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer.">
+    <meta name="twitter:description" content="Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer." data-i18n-content="meta.ogDesc">
     <meta name="twitter:image" content="https://lzc.app/assets/images/my-avatar.png">
 
     <!-- Structured data -->
@@ -93,30 +117,31 @@
     <link rel="stylesheet" href="./assets/css/fonts.css?v=4">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=4">
+    <link rel="stylesheet" href="./assets/css/style.css?v=5">
 
     <!-- Icons (Font Awesome subset — 18 light + 4 solid, ~5KB vs ~810KB) -->
     <link rel="stylesheet" href="./assets/fontawesome/fa-subset.css">
 </head>
 
 <body id="top">
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content"><span data-i18n="a11y.skip">Skip to content</span></a>
 
     <!-- ==================== NAV (desktop: top bar) ==================== -->
     <header class="site-nav" data-site-nav>
-        <a class="logo" href="#top" aria-label="LZC.app home">LZC.app</a>
-        <nav class="nav" aria-label="Primary">
-            <a class="nav-link active" href="#about">About</a>
-            <a class="nav-link" href="#resume">Resume</a>
-            <a class="nav-link" href="#friends">Friends</a>
-            <a class="nav-link" href="#sites">Sites</a>
+        <a class="logo" href="#top" aria-label="LZC.app home" data-i18n-attr="aria-label:logo.home">LZC.app</a>
+        <nav class="nav" aria-label="Primary" data-i18n-attr="aria-label:nav.primary">
+            <a class="nav-link active" href="#about" data-i18n="nav.about">About</a>
+            <a class="nav-link" href="#resume" data-i18n="nav.resume">Resume</a>
+            <a class="nav-link" href="#friends" data-i18n="nav.friends">Friends</a>
+            <a class="nav-link" href="#sites" data-i18n="nav.sites">Sites</a>
         </nav>
         <button class="theme-toggle" data-theme-toggle type="button" aria-label="切换主题（当前自动）" title="切换主题：自动 / 亮色 / 暗色">
             <i class="fa-light fa-adjust fa-fw" aria-hidden="true"></i>
         </button>
+        <button class="lang-toggle" data-lang-toggle type="button" aria-label="切换到中文" title="切换界面语言 / Switch language" lang="en">中</button>
     </header>
 
-    <button class="to-top" data-to-top type="button" aria-label="回到顶部" hidden>
+    <button class="to-top" data-to-top type="button" aria-label="Back to top" data-i18n-attr="aria-label:a11y.toTop" hidden>
         <i class="fa-light fa-arrow-up fa-fw" aria-hidden="true"></i>
     </button>
 
@@ -128,10 +153,10 @@
                     <img alt="LZC.app avatar" src="./assets/images/my-avatar.png" width="96" height="96" fetchpriority="high">
                 </figure>
                 <div class="hero-body">
-                    <p class="hero-meta"><i class="fa-light fa-location-dot fa-fw" aria-hidden="true"></i>&ensp;Guangdong, CN</p>
+                    <p class="hero-meta"><i class="fa-light fa-location-dot fa-fw" aria-hidden="true"></i>&ensp;<span data-i18n="hero.meta">Guangdong, CN</span></p>
                     <h1 class="hero-name">Laurence&nbsp;L.</h1>
                     <p class="hero-intro">
-                        Computer Science, Web, Programming... Domain enthusiast
+                        <span data-i18n="hero.intro">Computer Science, Web, Programming... Domain enthusiast</span>
                         <span class="hero-love">
                             <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;Andie
                         </span>
@@ -152,7 +177,7 @@
 
             <div class="section-head">
                 <span class="sec-num" aria-hidden="true">01</span>
-                <h2 class="sec-title" id="about-title">What I'm doing</h2>
+                <h2 class="sec-title" id="about-title" data-i18n="about.title">What I'm doing</h2>
                 <span class="sec-rule" aria-hidden="true"></span>
             </div>
 
@@ -160,7 +185,7 @@
                 <li class="service-item reveal">
                     <i class="fa-light fa-code fa-fw service-icon" aria-hidden="true"></i>
                     <div class="service-body">
-                        <h3 class="service-title">Software Development</h3>
+                        <h3 class="service-title" data-i18n="svc.dev.title">Software Development</h3>
                         <p class="service-text">
                             <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;C# (.NET) …
                         </p>
@@ -170,8 +195,8 @@
                 <li class="service-item reveal">
                     <i class="fa-light fa-mobile-screen fa-fw service-icon" aria-hidden="true"></i>
                     <div class="service-body">
-                        <h3 class="service-title">Mobile apps</h3>
-                        <p class="service-text">
+                        <h3 class="service-title" data-i18n="svc.mobile.title">Mobile apps</h3>
+                        <p class="service-text" data-i18n="svc.mobile.text">
                             Self-taught Android developer.
                         </p>
                     </div>
@@ -180,11 +205,11 @@
                 <li class="service-item reveal">
                     <i class="fa-light fa-camera fa-fw service-icon" aria-hidden="true"></i>
                     <div class="service-body">
-                        <h3 class="service-title">Photography</h3>
+                        <h3 class="service-title" data-i18n="svc.photo.title">Photography</h3>
                         <p class="service-text">
-                            Owns a Polaroid Sun 600 LMS.
+                            <span data-i18n="svc.photo.text1">Owns a Polaroid Sun 600 LMS.</span>
                             <br>
-                            Wishes for a mirrorless camera.
+                            <span data-i18n="svc.photo.text2">Wishes for a mirrorless camera.</span>
                         </p>
                     </div>
                 </li>
@@ -192,11 +217,11 @@
                 <li class="service-item reveal">
                     <i class="fa-light fa-mug-hot fa-fw service-icon" aria-hidden="true"></i>
                     <div class="service-body">
-                        <h3 class="service-title">Others</h3>
+                        <h3 class="service-title" data-i18n="svc.other.title">Others</h3>
                         <p class="service-text">
-                            Build my own PCs
+                            <span data-i18n="svc.other.text1">Build my own PCs</span>
                             <br>
-                            Movies &amp; Musics, Books, Games …
+                            <span data-i18n="svc.other.text2">Movies &amp; Musics, Books, Games …</span>
                         </p>
                     </div>
                 </li>
@@ -207,34 +232,34 @@
         <section id="resume" class="section" data-page="resume" aria-labelledby="resume-title">
             <div class="section-head">
                 <span class="sec-num" aria-hidden="true">02</span>
-                <h2 class="sec-title" id="resume-title">Resume</h2>
+                <h2 class="sec-title" id="resume-title" data-i18n="resume.title">Resume</h2>
                 <span class="sec-rule" aria-hidden="true"></span>
             </div>
 
             <div class="resume-grid">
                 <div class="resume-col">
                     <h3 class="col-title">
-                        <i class="fa-light fa-books fa-fw" aria-hidden="true"></i>&ensp;Education
+                        <i class="fa-light fa-books fa-fw" aria-hidden="true"></i><span data-i18n="resume.edu">Education</span>
                     </h3>
                     <ol class="timeline-list">
                         <li class="timeline-item reveal">
                             <time class="timeline-date">2016 — 2020</time>
                             <h4 class="timeline-title">
-                                Beijing Normal-Hong Kong Baptist University (BNBU)
-                                &ensp;<a href="https://uic.edu.cn/" target="_blank" rel="noopener" aria-label="BNBU website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
+                                <span data-i18n="edu.bnbu">Beijing Normal-Hong Kong Baptist University (BNBU)</span>
+                                &ensp;<a href="https://uic.edu.cn/" target="_blank" rel="noopener" aria-label="BNBU website" data-i18n-attr="aria-label:edu.bnbu.site"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <p class="timeline-text">
+                            <p class="timeline-text" data-i18n="edu.degree">
                                 B.S. in Computer Science and Technology
                             </p>
                         </li>
 
                         <li class="timeline-item reveal">
-                            <time class="timeline-date">Summer of 2012</time>
+                            <time class="timeline-date" data-i18n="date.summer2012">Summer of 2012</time>
                             <h4 class="timeline-title">
-                                Hong Kong Baptist University
-                                &ensp;<a href="https://www.hkbu.edu.hk/" target="_blank" rel="noopener" aria-label="HKBU website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
+                                <span data-i18n="edu.hkbu">Hong Kong Baptist University</span>
+                                &ensp;<a href="https://www.hkbu.edu.hk/" target="_blank" rel="noopener" aria-label="HKBU website" data-i18n-attr="aria-label:edu.hkbu.site"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <p class="timeline-text">
+                            <p class="timeline-text" data-i18n="edu.summerCourse">
                                 Summer Course: You and Your Health
                             </p>
                         </li>
@@ -243,28 +268,28 @@
 
                 <div class="resume-col">
                     <h3 class="col-title">
-                        <i class="fa-light fa-briefcase fa-fw" aria-hidden="true"></i>&ensp;Experience
+                        <i class="fa-light fa-briefcase fa-fw" aria-hidden="true"></i><span data-i18n="resume.experience">Experience</span>
                     </h3>
                     <ol class="timeline-list">
                         <li class="timeline-item reveal">
-                            <time class="timeline-date">2023 — Present</time>
+                            <time class="timeline-date" data-i18n="date.2023present">2023 — Present</time>
                             <h4 class="timeline-title">
-                                ITran Information System Co., Ltd.
-                                <span class="now-badge">Now</span>
+                                <span data-i18n="co.itran">ITran Information System Co., Ltd.</span>
+                                <span class="now-badge" data-i18n="badge.now">Now</span>
                                 &ensp;<a href="http://www.itran.com/" target="_blank" rel="noopener" aria-label="ITran website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <p class="timeline-text">
+                            <p class="timeline-text" data-i18n="job.itran">
                                 .NET Software Development Engineer
                             </p>
                         </li>
 
                         <li class="timeline-item reveal">
-                            <time class="timeline-date">2016 — Present</time>
+                            <time class="timeline-date" data-i18n="date.2016present">2016 — Present</time>
                             <h4 class="timeline-title">
                                 UICHCC (UIC Homebrew Computer Club)
                                 &ensp;<a href="https://uichcc.com/" target="_blank" rel="noopener" aria-label="UICHCC website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <p class="timeline-text">
+                            <p class="timeline-text" data-i18n="exp.founder">
                                 Founder / Secretary
                             </p>
                         </li>
@@ -275,23 +300,23 @@
                                 TEDxUIC
                                 &ensp;<a href="https://tedxuic.com/" target="_blank" rel="noopener" aria-label="TEDxUIC website"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
                             </h4>
-                            <p class="timeline-text">
+                            <p class="timeline-text" data-i18n="exp.tedx">
                                 Technical Team Leader / Stage Manager
                             </p>
                         </li>
 
                         <li class="timeline-item reveal">
-                            <time class="timeline-date">Summer of 2018</time>
-                            <h4 class="timeline-title">China Everbright Bank Co., Ltd.</h4>
-                            <p class="timeline-text">
+                            <time class="timeline-date" data-i18n="date.summer2018">Summer of 2018</time>
+                            <h4 class="timeline-title"><span data-i18n="co.ceb">China Everbright Bank Co., Ltd.</span></h4>
+                            <p class="timeline-text" data-i18n="exp.intern">
                                 Intern
                             </p>
                         </li>
 
                         <li class="timeline-item reveal">
                             <time class="timeline-date">2017 — 2018</time>
-                            <h4 class="timeline-title">Computer Science Professional Association, UIC</h4>
-                            <p class="timeline-text">
+                            <h4 class="timeline-title"><span data-i18n="co.cspa">Computer Science Professional Association, UIC</span></h4>
+                            <p class="timeline-text" data-i18n="exp.cabinet">
                                 Cabinet Secretary
                             </p>
                         </li>
@@ -301,13 +326,13 @@
 
             <div class="resume-col downloads">
                 <h3 class="col-title">
-                    <i class="fa-light fa-download fa-fw" aria-hidden="true"></i>&ensp;Downloads
+                    <i class="fa-light fa-download fa-fw" aria-hidden="true"></i><span data-i18n="resume.downloads">Downloads</span>
                 </h3>
                 <ol class="timeline-list">
                     <li class="timeline-item reveal">
                         <h4 class="timeline-title">
                             <a href="https://static.lzc.app/cv/%E7%BD%97%E5%AD%90%E7%90%9B.pdf" target="_blank" rel="noopener">
-                                <i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>&ensp;简历 (中文)
+                                <i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>&ensp;<span data-i18n="dl.cn">简历 (中文)</span>
                             </a>
                         </h4>
                         <p class="timeline-text"></p>
@@ -316,14 +341,14 @@
                     <li class="timeline-item reveal">
                         <h4 class="timeline-title">
                             <a href="https://static.lzc.app/cv/Zichen%20LUO.pdf" target="_blank" rel="noopener">
-                                <i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>&ensp;Resume (English)
+                                <i class="fa-light fa-file-pdf fa-fw" aria-hidden="true"></i>&ensp;<span data-i18n="dl.en">Resume (English)</span>
                             </a>
                         </h4>
                         <p class="timeline-text"></p>
                     </li>
 
                     <li class="timeline-item reveal">
-                        <p class="timeline-text note">
+                        <p class="timeline-text note" data-i18n-html="dl.note">
                             All digitally signed with my self-signed X.509 certificate.<br>
                             SHA256 Fingerprint: 90A5C1D81627FD687A17A4C881882DC317292932A1B1FA0FC14EBD5D3C5ED51D.
                         </p>
@@ -336,12 +361,12 @@
         <section id="friends" class="section" data-page="friends" aria-labelledby="friends-title">
             <div class="section-head">
                 <span class="sec-num" aria-hidden="true">03</span>
-                <h2 class="sec-title" id="friends-title">Friends</h2>
+                <h2 class="sec-title" id="friends-title" data-i18n="friends.title">Friends</h2>
                 <span class="sec-rule" aria-hidden="true"></span>
             </div>
 
             <h3 class="col-title">
-                <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i>&ensp;My Love
+                <i class="fa-light fa-heart fa-fw" aria-hidden="true"></i><span data-i18n="friends.love">My Love</span>
             </h3>
             <ul class="friend-list">
                 <li class="friend-item love-item reveal">
@@ -351,7 +376,7 @@
             </ul>
 
             <h3 class="col-title">
-                <i class="fa-light fa-user-group fa-fw" aria-hidden="true"></i>&ensp;My Friends
+                <i class="fa-light fa-user-group fa-fw" aria-hidden="true"></i><span data-i18n="friends.friends">My Friends</span>
             </h3>
             <ul class="friends-grid">
                 <li class="friend-item reveal">
@@ -405,20 +430,20 @@
         <section id="sites" class="section" data-page="sites" aria-labelledby="sites-title">
             <div class="section-head">
                 <span class="sec-num" aria-hidden="true">04</span>
-                <h2 class="sec-title" id="sites-title">Sites &amp; Services</h2>
+                <h2 class="sec-title" id="sites-title" data-i18n="sites.title">Sites &amp; Services</h2>
                 <span class="sec-rule" aria-hidden="true"></span>
             </div>
 
             <h3 class="col-title">
-                Status Page
-                &ensp;<a class="ext-link" href="https://status.seeleo.com" target="_blank" rel="noopener" aria-label="Open status page"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
+                <span data-i18n="sites.status">Status Page</span>
+                <a class="ext-link" href="https://status.seeleo.com" target="_blank" rel="noopener" aria-label="Open status page" data-i18n-attr="aria-label:sites.statusOpen"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
             </h3>
             <div class="mapbox reveal" data-mapbox aria-label="Service status">
-                <iframe loading="lazy" scrolling="no" title="Status page of seeleo services" src="https://status.seeleo.com/"></iframe>
+                <iframe loading="lazy" scrolling="no" title="Status page of seeleo services" src="https://status.seeleo.com/" data-i18n-attr="title:sites.statusIframe"></iframe>
             </div>
 
             <h3 class="col-title">
-                <i class="fa-light fa-earth-asia fa-fw" aria-hidden="true"></i>&ensp;Domains
+                <i class="fa-light fa-earth-asia fa-fw" aria-hidden="true"></i><span data-i18n="sites.domains">Domains</span>
             </h3>
             <ul class="link-grid">
                 <li class="link-item reveal">
@@ -430,7 +455,7 @@
                     <a class="link-name" href="https://seeleo.cn" target="_blank" rel="noopener">seeleo.cn</a>
                     <span class="link-sep" aria-hidden="true">/</span>
                     <a class="link-name" href="https://seeleo.com" target="_blank" rel="noopener">seeleo.com</a>
-                    <span class="link-note">"Seele + O" or "See + Leo"</span>
+                    <span class="link-note" data-i18n="sites.noteSeeleo">"Seele + O" or "See + Leo"</span>
                 </li>
 
                 <li class="link-item reveal">
@@ -439,7 +464,7 @@
                         &ensp;
                         <a href="https://web.archive.org/web/20250731154246/https://%D0%BE%D1%80%D1%80%D0%BE.com/" target="_blank" rel="noopener"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
                     </span>
-                    <span class="link-note">Fake OPPO site for demonstration of <ins>IDN homograph attack</ins></span>
+                    <span class="link-note" data-i18n-html="sites.noteOppor">Fake OPPO site for demonstration of <ins>IDN homograph attack</ins></span>
                 </li>
 
                 <li class="link-item reveal">
@@ -449,12 +474,12 @@
                         <a href="https://github.com/lzcapp/longlive.su" target="_blank" rel="noopener"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
                     </span>
                     <span class="link-note"><i class="fa-light fa-calendar-xmark fa-fw" aria-hidden="true"></i>&ensp;2021/03/16 - 2025/03/16</span>
-                    <span class="link-note">Long Live the Soviet Union</span>
+                    <span class="link-note" data-i18n="sites.noteLonglive">Long Live the Soviet Union</span>
                 </li>
             </ul>
 
             <h3 class="col-title">
-                <i class="fa-light fa-gear fa-fw" aria-hidden="true"></i>&ensp;Services
+                <i class="fa-light fa-gear fa-fw" aria-hidden="true"></i><span data-i18n="sites.services">Services</span>
             </h3>
             <ul class="link-grid">
                 <li class="link-item reveal">
@@ -473,7 +498,7 @@
                 </li>
 
                 <li class="link-item reveal">
-                    <span class="link-name"><i class="fa-solid fa-ellipsis fa-fw" aria-hidden="true"></i>&ensp;And more</span>
+                    <span class="link-name"><i class="fa-solid fa-ellipsis fa-fw" aria-hidden="true"></i>&ensp;<span data-i18n="sites.more">And more</span></span>
                 </li>
             </ul>
         </section>
@@ -499,7 +524,8 @@
 
     <!-- Scripts -->
     <script src="./assets/js/punycode.js?v=4"></script>
-    <script src="./assets/js/script.js?v=4"></script>
+    <script src="./assets/js/i18n.js?v=5"></script>
+    <script src="./assets/js/script.js?v=5"></script>
 
     <!--
       - Site / ICP / SSL / IPv6 logic (per-domain)

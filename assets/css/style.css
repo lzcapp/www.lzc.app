@@ -235,13 +235,14 @@ a, p, span, h1, h2, h3, h4, li {
 }
 
 .nav {
-    order: 3;
+    order: 4;
     display: flex;
     align-items: center;
     gap: 2px;
     overflow-x: auto;
     scrollbar-width: none;
     margin-left: auto;
+    min-width: 0; /* let the strip shrink and scroll instead of pushing past the edge */
 }
 
 .nav::-webkit-scrollbar {
@@ -305,6 +306,23 @@ a, p, span, h1, h2, h3, h4, li {
 /* theme icon via CSS var (syncs with JS) */
 .theme-toggle i::before {
     content: var(--theme-icon);
+}
+
+/* language toggle — same weight as the theme button, sits next to it */
+.lang-toggle {
+    order: 3;
+    padding: 8px 10px;
+    border-radius: var(--r-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-3);
+    transition: color var(--t-fast), background var(--t-fast);
+}
+
+.lang-toggle:hover {
+    color: var(--text-1);
+    background: var(--surface-2);
 }
 
 /* ====================================
@@ -532,6 +550,12 @@ main {
 
 .col-title i {
     color: var(--accent);
+}
+
+/* the label is wrapped in a <span> for i18n, so the old &ensp; gutter
+   is restored here instead of living inside the text node */
+.col-title > i {
+    margin-right: 8px;
 }
 
 .timeline-item {
@@ -888,15 +912,20 @@ main {
         padding: 96px 0;
     }
 
-    /* desktop order: logo | links | theme-toggle */
+    /* desktop order: logo | links | lang-toggle | theme-toggle */
     .nav {
         order: 2;
         margin-left: 0;
     }
 
-    .theme-toggle {
+    .lang-toggle {
         order: 3;
         margin-left: auto;
+    }
+
+    .theme-toggle {
+        order: 4;
+        margin-left: 0;
     }
 
     .theme-toggle::before {

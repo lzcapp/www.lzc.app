@@ -130,12 +130,21 @@ function syncThemeColor() {
     });
 }
 
+// labels live in i18n.js so the toggle follows the UI language
+const tr = (key, vars) => (window.lzcI18n ? window.lzcI18n.t(key, vars) : '');
+
 function updateThemeBtn() {
     if (!themeBtn) return;
-    const next = currentTheme() === 'light' ? 'dark' : 'light';
+    if (!window.lzcI18n) return; // keep the markup's own label when i18n is unavailable
+    const cur = currentTheme();
+    const next = cur === 'light' ? 'dark' : 'light';
     themeBtn.setAttribute('aria-label',
-        `切换主题（当前${currentTheme() === 'light' ? '亮色' : '暗色'}，点击转${next === 'light' ? '亮色' : '暗色'}）`);
+        tr('theme.toggle', { cur: tr('theme.' + cur), next: tr('theme.' + next) }));
+    themeBtn.setAttribute('title', tr('theme.title'));
 }
+
+// re-render the label whenever the language changes
+document.addEventListener('lzc:langchange', updateThemeBtn);
 
 function applyTheme(theme, { user = false, persist = true } = {}) {
     themeRoot.setAttribute('data-theme', theme);
