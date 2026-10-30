@@ -3,3 +3,6 @@
 # local previews & workbuddy data
 .preview/
 .workbuddy/
+
+# macOS
+.DS_Store
