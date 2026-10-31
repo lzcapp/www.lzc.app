@@ -16,8 +16,8 @@
 
     const DICT = {
         en: {
-            'meta.desc': 'Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer. Blog, projects and more.',
-            'meta.ogDesc': 'Personal portfolio of Laurence L. — .NET software developer, Android enthusiast, photographer.',
+            'meta.desc': 'Personal portfolio of Laurence L. — engineer, Android enthusiast, photographer. Blog, projects and more.',
+            'meta.ogDesc': 'Personal portfolio of Laurence L. — engineer, Android enthusiast, photographer.',
             'meta.ogLocale': 'en_US',
 
             'a11y.skip': 'Skip to content',
@@ -56,11 +56,14 @@
             'edu.summerCourse': 'Summer Course: You and Your Health',
             'date.summer2012': 'Summer of 2012',
             'date.summer2018': 'Summer of 2018',
-            'date.2023present': '2023 — Present',
+            'date.2025present': 'Dec 2025 — Present',
+            'date.2023_2025': 'Aug 2023 — Oct 2025',
             'date.2016present': '2016 — Present',
+            'co.embodied': 'Guangdong Embodied Intelligence Technology Co., Ltd.',
             'co.itran': 'ITran Information System Co., Ltd.',
             'co.ceb': 'China Everbright Bank Co., Ltd.',
             'co.cspa': 'Computer Science Professional Association, UIC',
+            'job.embodied': 'General-Purpose Robot Software Development Engineer',
             'job.itran': '.NET Software Development Engineer',
             'exp.founder': 'Founder / Secretary',
             'exp.tedx': 'Technical Team Leader / Stage Manager',
@@ -97,8 +100,8 @@
         },
 
         zh: {
-            'meta.desc': 'Laurence L. 的个人主页 —— .NET 软件工程师、Android 爱好者、摄影爱好者。博客、项目与更多。',
-            'meta.ogDesc': 'Laurence L. 的个人主页 —— .NET 软件工程师、Android 爱好者、摄影爱好者。',
+            'meta.desc': 'Laurence L. 的个人主页 —— 工程师、Android 爱好者、摄影爱好者。博客、项目与更多。',
+            'meta.ogDesc': 'Laurence L. 的个人主页 —— 工程师、Android 爱好者、摄影爱好者。',
             'meta.ogLocale': 'zh_CN',
 
             'a11y.skip': '跳到主要内容',
@@ -137,11 +140,14 @@
             'edu.summerCourse': '暑期课程：You and Your Health',
             'date.summer2012': '2012 年夏',
             'date.summer2018': '2018 年夏',
-            'date.2023present': '2023 — 至今',
+            'date.2025present': '2025.12 — 至今',
+            'date.2023_2025': '2023.08 — 2025.10',
             'date.2016present': '2016 — 至今',
+            'co.embodied': '广东省具身智能科技有限公司',
             'co.itran': '深圳运捷迅信息系统有限公司',
             'co.ceb': '光大银行',
             'co.cspa': 'UIC计算机专业学会',
+            'job.embodied': '机器人通用软件开发工程师',
             'job.itran': '.NET 软件开发工程师',
             'exp.founder': '创始人 / 秘书',
             'exp.tedx': '技术组组长 / 场控',
