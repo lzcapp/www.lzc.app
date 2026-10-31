@@ -1,10 +1,6 @@
-@import url('https://fonts.googlefonts.cn/css?family=Noto+Sans+Display:300,400,500&display=swap');
-
-@import url('https://fonts.googlefonts.cn/css?family=Noto+Sans+SC:300,400,500&display=swap');
-
-@import url('https://fonts.googlefonts.cn/css?family=Noto+Sans+Mono:300,400,500&display=swap');
-
-@import url('https://fonts.googlefonts.cn/css?family=Noto+Serif+SC:400,500,700&display=swap');
+/* 字体文件本身由 index.html 里的一条 <link> 直接加载（4 个字族合并成 1 个请求）。
+   这里只保留字体族映射规则，不再用 @import —— @import 会形成
+   fonts.css → 4×外部 CSS 的串行瀑布，且整体是渲染阻塞的。 */
 
 html {
     font-family: 'Noto Sans Display', 'Noto Sans SC', sans-serif !important;
