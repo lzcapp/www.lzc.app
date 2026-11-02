@@ -1,6 +1,6 @@
 /*! Font Awesome 6 Pro — lzc.app subset: 18 light + 4 solid icons */
-@font-face{font-family:"Font Awesome 6 Pro";font-style:normal;font-weight:300;font-display:block;src:url(./webfonts/fa-light-subset.woff2) format("woff2")}
-@font-face{font-family:"Font Awesome 6 Pro";font-style:normal;font-weight:900;font-display:block;src:url(./webfonts/fa-solid-subset.woff2) format("woff2")}
+@font-face{font-family:"Font Awesome 6 Pro";font-style:normal;font-weight:300;font-display:swap;src:url(./webfonts/fa-light-subset.woff2) format("woff2")}
+@font-face{font-family:"Font Awesome 6 Pro";font-style:normal;font-weight:900;font-display:swap;src:url(./webfonts/fa-solid-subset.woff2) format("woff2")}
 :host,:root{
   --fa-style-family:"Font Awesome 6 Pro";
   --fa-style:900;

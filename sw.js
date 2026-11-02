@@ -9,23 +9,21 @@
 */
 'use strict';
 
-const VERSION = 'v6.0.0';
+const VERSION = 'v6.1.0';
 const CACHE_NAME = 'lzc-app-' + VERSION;
 
 // 未带版本号资源的最长信任期；过期后先给旧内容，再在后台刷新
 const MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 
+// 预缓存只放“URL 稳定”的东西。
+// CSS 和字体现在由 tools/build-css.py 生成，URL 带内容哈希（app.min.css?v=…、
+// *.woff2?v=…），这里没法写死；它们在首次访问时由下面的 cache-first 分支
+// 顺手存下，没必要为此在 install 阶段再下一遍（字体有 330 KB）。
 const CORE_ASSETS = [
-    './assets/css/style.css?v=5',
-    './assets/css/fonts.css?v=6',
-    './assets/fonts/noto-sans-sc-var.woff2',
-    './assets/fonts/noto-serif-sc-var.woff2',
-    './assets/fonts/noto-sans-display-var.woff2',
-    './assets/fonts/noto-sans-mono-var.woff2',
-    './assets/js/i18n.js?v=7',
+    './assets/js/i18n.js?v=8',
     './assets/js/script.js?v=5',
     './assets/js/punycode.js?v=4',
-    './assets/images/my-avatar.png'
+    './assets/images/my-avatar.webp'
 ];
 
 self.addEventListener('install', (event) => {

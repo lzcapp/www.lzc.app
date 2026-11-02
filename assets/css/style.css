@@ -369,6 +369,11 @@ main {
     object-fit: cover;
 }
 
+/* <picture> 只是给 WebP 提供候选源，不该参与盒模型（否则会多出一条行内空隙） */
+.avatar picture {
+    display: contents;
+}
+
 .hero-body {
     min-width: 0;
 }
@@ -688,33 +693,6 @@ main {
 /* ====================================
    11. SITES
 ==================================== */
-.mapbox {
-    position: relative;
-    height: 240px;
-    margin-bottom: 48px;
-    border-radius: var(--r-md);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    background: var(--surface-1);
-}
-
-.mapbox iframe {
-    width: 100%;
-    height: 1100px;
-    border: none;
-    display: block;
-    overflow: hidden;
-}
-
-.ext-link {
-    color: var(--text-3);
-    font-size: 0.85rem;
-}
-
-.ext-link:hover {
-    color: var(--accent-2);
-}
-
 .link-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -1026,10 +1004,6 @@ main {
 
     a {
         color: #1a1a17;
-    }
-
-    .mapbox {
-        display: none;
     }
 
     .resume-grid {

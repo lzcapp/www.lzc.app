@@ -108,23 +108,22 @@
         }
     </script>
 
-    <!-- Performance: preconnect to external origins -->
-    <link rel="preconnect" href="https://resume.lzc.app" crossorigin>
-    <link rel="dns-prefetch" href="https://status.seeleo.com">
+    <!-- 字体预加载：本区块由 tools/build-css.py 生成，URL 带内容哈希，不要手改。
+         正文用字占首屏绝大部分文字；两个图标字体体积很小却在首屏就要用，
+         一起预加载可以避免图标先空白、后补上的闪动。 -->
+    <!-- preloads:start -->
+    <link rel="preload" href="./assets/fonts/noto-sans-sc-var.woff2?v=b8014cce" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fontawesome/webfonts/fa-solid-subset.woff2?v=63323d28" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fontawesome/webfonts/fa-light-subset.woff2?v=2938f70c" as="font" type="font/woff2" crossorigin>
+    <!-- preloads:end -->
 
-    <!-- Fonts: 自托管子集字体，见 assets/css/fonts.css（文案改动后跑 tools/subset-fonts.py）。
-         只预加载正文字体：它占首屏绝大部分文字，先抓它能明显缩短 swap 的闪烁窗口；
-         衬线标题字体同为同源小文件，由 CSS 发现即可，不必挤占关键路径。 -->
-    <link rel="preload" href="./assets/fonts/noto-sans-sc-var.woff2" as="font" type="font/woff2" crossorigin>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="./assets/css/fonts.css?v=6">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=5">
-
-    <!-- Icons (Font Awesome subset — 18 light + 4 solid, ~5KB vs ~810KB) -->
-    <link rel="stylesheet" href="./assets/fontawesome/fa-subset.css">
+    <!-- 样式：fonts / style / fontawesome 三个源文件由 tools/build-css.py 合并压缩成
+         app.min.css —— 一次请求替代原来三次渲染阻塞请求，字体 URL 自动带内容哈希，
+         可以放心按“永久缓存”对待。
+         改了 assets/css 或 assets/fontawesome 里的源文件后要重跑：
+             python3 tools/build-css.py
+         上线前自检： python3 tools/build-css.py --check -->
+    <link rel="stylesheet" href="./assets/css/app.min.css?v=d8bc8ed1">
 </head>
 
 <body id="top">
@@ -154,7 +153,10 @@
         <section id="about" class="section" data-page="about" aria-labelledby="about-title">
             <div class="hero">
                 <figure class="avatar" aria-label="Avatar of Laurence L.">
-                    <img alt="LZC.app avatar" src="./assets/images/my-avatar.png" width="96" height="96" fetchpriority="high">
+                    <picture>
+                        <source srcset="./assets/images/my-avatar.webp" type="image/webp">
+                        <img alt="LZC.app avatar" src="./assets/images/my-avatar.png" width="96" height="96" fetchpriority="high">
+                    </picture>
                 </figure>
                 <div class="hero-body">
                     <p class="hero-meta"><i class="fa-light fa-location-dot fa-fw" aria-hidden="true"></i>&ensp;<span data-i18n="hero.meta">Guangdong, CN</span></p>
@@ -446,13 +448,18 @@
                 <span class="sec-rule" aria-hidden="true"></span>
             </div>
 
+            <!-- 状态页原本是整页 iframe 内嵌，代价是 750 KB（它自带的 gtag、
+                 Better Stack 和 Inter 字体）+ 50 多个请求，换来的只是首屏外
+                 一个 240px 的窗口。改为与其他两组一致的链接行，点进去看实时状态。 -->
             <h3 class="col-title">
-                <span data-i18n="sites.status">Status Page</span>
-                <a class="ext-link" href="https://status.seeleo.com" target="_blank" rel="noopener" aria-label="Open status page" data-i18n-attr="aria-label:sites.statusOpen"><i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i></a>
+                <i class="fa-solid fa-up-right-from-square fa-fw" aria-hidden="true"></i><span data-i18n="sites.status">Status Page</span>
             </h3>
-            <div class="mapbox reveal" data-mapbox aria-label="Service status">
-                <iframe loading="lazy" scrolling="no" title="Status page of seeleo services" src="https://status.seeleo.com/" data-i18n-attr="title:sites.statusIframe"></iframe>
-            </div>
+            <ul class="link-grid">
+                <li class="link-item reveal">
+                    <a class="link-name" href="https://status.seeleo.com" target="_blank" rel="noopener">status.seeleo.com</a>
+                    <span class="link-note" data-i18n="sites.statusNote">Real-time availability and incident history</span>
+                </li>
+            </ul>
 
             <h3 class="col-title">
                 <i class="fa-light fa-earth-asia fa-fw" aria-hidden="true"></i><span data-i18n="sites.domains">Domains</span>
@@ -474,7 +481,7 @@
                     <span class="link-name dead">
                         <del>орро.com</del>
                         &ensp;
-                        <a href="https://web.archive.org/web/20250731154246/https://%D0%BE%D1%80%D1%80%D0%BE.com/" target="_blank" rel="noopener"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
+                        <a href="https://web.archive.org/web/20250731154246/https://%D0%BE%D1%80%D1%80%D0%BE.com/" target="_blank" rel="noopener" aria-label="View the орро.com snapshot on the Wayback Machine" data-i18n-attr="aria-label:sites.archiveOppor"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
                     </span>
                     <span class="link-note" data-i18n-html="sites.noteOppor">Fake OPPO site for demonstration of <ins>IDN homograph attack</ins></span>
                 </li>
@@ -483,7 +490,7 @@
                     <span class="link-name dead">
                         <del>longlive.su</del>
                         &ensp;
-                        <a href="https://github.com/lzcapp/longlive.su" target="_blank" rel="noopener"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
+                        <a href="https://github.com/lzcapp/longlive.su" target="_blank" rel="noopener" aria-label="View the longlive.su repository on GitHub" data-i18n-attr="aria-label:sites.archiveLonglive"><i class="fa-light fa-warehouse fa-fw" aria-hidden="true"></i></a>
                     </span>
                     <span class="link-note"><i class="fa-light fa-calendar-xmark fa-fw" aria-hidden="true"></i>&ensp;2021/03/16 - 2025/03/16</span>
                     <span class="link-note" data-i18n="sites.noteLonglive">Long Live the Soviet Union</span>
@@ -536,7 +543,7 @@
 
     <!-- Scripts -->
     <script src="./assets/js/punycode.js?v=4"></script>
-    <script src="./assets/js/i18n.js?v=7"></script>
+    <script src="./assets/js/i18n.js?v=8"></script>
     <script src="./assets/js/script.js?v=5"></script>
 
     <!--

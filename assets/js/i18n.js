@@ -80,12 +80,13 @@
 
             'sites.title': 'Sites & Services',
             'sites.status': 'Status Page',
-            'sites.statusOpen': 'Open status page',
-            'sites.statusIframe': 'Status page of seeleo services',
+            'sites.statusNote': 'Real-time availability and incident history',
             'sites.domains': 'Domains',
             'sites.noteSeeleo': '"Seele + O" or "See + Leo"',
             'sites.noteOppor': 'Fake OPPO site for demonstration of <ins>IDN homograph attack</ins>',
             'sites.noteLonglive': 'Long Live the Soviet Union',
+            'sites.archiveOppor': 'View the орро.com snapshot on the Wayback Machine',
+            'sites.archiveLonglive': 'View the longlive.su repository on GitHub',
             'sites.services': 'Services',
             'sites.more': 'And more',
 
@@ -164,12 +165,13 @@
 
             'sites.title': '站点与服务',
             'sites.status': '服务状态',
-            'sites.statusOpen': '打开状态页',
-            'sites.statusIframe': 'seeleo 服务状态页',
+            'sites.statusNote': '实时可用性与历史事件记录',
             'sites.domains': '域名',
             'sites.noteSeeleo': '“Seele + O” 或 “See + Leo”',
             'sites.noteOppor': '用于演示 <ins>IDN 同形异义攻击</ins> 的仿冒 OPPO 站点',
             'sites.noteLonglive': '苏联万岁',
+            'sites.archiveOppor': '在 Wayback Machine 查看 орро.com 快照',
+            'sites.archiveLonglive': '在 GitHub 查看 longlive.su 仓库',
             'sites.services': '服务',
             'sites.more': '更多',
 
@@ -234,7 +236,9 @@
         // the toggle always offers the *other* language
         document.querySelectorAll('[data-lang-toggle]').forEach((btn) => {
             btn.textContent = t('lang.code');
-            btn.setAttribute('aria-label', t('lang.switch'));
+            // 可读名称里必须带上按钮上看得见的那个字（WCAG 2.5.3 label in name），
+            // 否则读屏用户说“点 EN”时按名字找不到按钮
+            btn.setAttribute('aria-label', t('lang.switch') + '（' + t('lang.code') + '）');
             btn.setAttribute('title', t('lang.title'));
             btn.setAttribute('lang', HTML_LANG[lang === 'zh' ? 'en' : 'zh']);
         });
