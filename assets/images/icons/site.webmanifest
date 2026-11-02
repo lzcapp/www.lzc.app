@@ -24,7 +24,7 @@
             "purpose": "any"
         },
         {
-            "src": "/assets/images/icons/android-chrome-512x512.png",
+            "src": "/assets/images/icons/android-chrome-512x512-maskable.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
