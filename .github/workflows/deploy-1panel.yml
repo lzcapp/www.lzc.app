@@ -1,0 +1,84 @@
+name: Sync www.lzc.app to 1Panel
+
+# 方案 B：GitHub Actions 打包静态产物 -> scp 到服务器 -> SSH 解压
+# 服务器不需要访问 GitHub，也不需要 git / deploy key，适合境内 ECS。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-1panel
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Pack static site
+        run: |
+          set -e
+          # 纯静态站，无构建步骤；产物（app.min.css / 子集字体）已在仓库里。
+          # 排除 Git 元数据、构建脚本和 Apache/PHP/Pages 遗留文件。
+          tar -czf /tmp/site.tgz \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='tools' \
+            --exclude='.htaccess' \
+            --exclude='.user.ini' \
+            --exclude='CNAME' \
+            --exclude='README.md' \
+            --exclude='.gitignore' \
+            --exclude='.gitattributes' \
+            --exclude='.DS_Store' \
+            -C . .
+          ls -lh /tmp/site.tgz
+
+      - name: Upload package
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: /tmp/site.tgz
+          target: /tmp/
+
+      - name: Unpack on server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          command_timeout: 5m
+          script: |
+            set -e
+            SITE="${{ vars.SITE_DIR }}"
+            [ -n "$SITE" ] || SITE=/opt/1panel/www/sites/seeleo.com/index
+            # 防止误清空根目录或填错路径
+            case "$SITE" in
+              ""|"/"|"/opt"|"/opt/1panel") echo "bad SITE_DIR: $SITE"; exit 1 ;;
+            esac
+            case "$SITE" in
+              */sites/*/index) ;;
+              *) echo "unexpected SITE_DIR layout: $SITE"; exit 1 ;;
+            esac
+            [ -f /tmp/site.tgz ] || { echo "package missing"; exit 1; }
+
+            STAGE=$(mktemp -d)
+            tar -xzf /tmp/site.tgz -C "$STAGE"
+            mkdir -p "$SITE"
+            # 仓库是唯一可信源：先清空站点目录，再整体覆盖
+            find "$SITE" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+            cp -a "$STAGE"/. "$SITE"/
+            chmod -R a+rX "$SITE"
+            rm -rf "$STAGE" /tmp/site.tgz
+
+            echo "deployed $(date -Is) to $SITE"
