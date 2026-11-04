@@ -82,8 +82,10 @@ jobs:
             mkdir -p "$SITE"
             # 仓库是唯一可信源：先清空站点目录，再整体覆盖
             find "$SITE" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
-            cp -a "$STAGE"/. "$SITE"/
-            chmod -R a+rX "$SITE"
+            # 不用 cp -a：它会把临时目录的属主/时间戳/权限套到目标目录，
+            # 非 owner 时报 Operation not permitted，且可能把目录改成 700
+            cp -R "$STAGE"/. "$SITE"/
+            chmod -R a+rX "$SITE" 2>/dev/null || true
             rm -rf "$STAGE" "$PKG"
 
             echo "deployed $(date -Is) to $SITE"
