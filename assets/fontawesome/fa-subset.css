@@ -1,6 +1,7 @@
-/*! Font Awesome 6 Pro — lzc.app subset: 18 light + 4 solid icons */
+/*! Font Awesome 6 Pro — lzc.app subset: 24 light + 4 solid + 1 brand icons */
 @font-face{font-family:"Font Awesome 6 Pro";font-style:normal;font-weight:300;font-display:swap;src:url(./webfonts/fa-light-subset.woff2) format("woff2")}
 @font-face{font-family:"Font Awesome 6 Pro";font-style:normal;font-weight:900;font-display:swap;src:url(./webfonts/fa-solid-subset.woff2) format("woff2")}
+@font-face{font-family:"Font Awesome 6 Brands";font-style:normal;font-weight:400;font-display:swap;src:url(./webfonts/fa-brands-subset.woff2) format("woff2")}
 :host,:root{
   --fa-style-family:"Font Awesome 6 Pro";
   --fa-style:900;
@@ -21,6 +22,11 @@
 .fas,.fa-solid{
   font-family:"Font Awesome 6 Pro";
   font-weight:900;
+  font-style:normal
+}
+.fab,.fa-brands{
+  font-family:"Font Awesome 6 Brands";
+  font-weight:400;
   font-style:normal
 }
 .fa-fw{
@@ -44,8 +50,10 @@
 .fa-code-branch:before{content:"\f126"}
 .fa-download:before{content:"\f019"}
 .fa-earth-asia:before{content:"\f57e"}
+.fa-envelope:before{content:"\f0e0"}
 .fa-file-pdf:before{content:"\f1c1"}
 .fa-gear:before{content:"\f013"}
+.fa-github:before{content:"\f09b"}
 .fa-heart:before{content:"\f004"}
 .fa-key:before{content:"\f084"}
 .fa-lock:before{content:"\f023"}

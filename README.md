@@ -8,8 +8,8 @@
 
 ## 维护
 
-纯静态站，没有打包器和依赖，只有两个标准库脚本。**改源文件后要重跑对应脚本再提交**，
-否则线上还是旧产物。
+纯静态站，没有打包器和依赖，只有三个构建脚本（前两个只用标准库，图标子集那个需要
+fonttools）。**改源文件后要重跑对应脚本再提交**，否则线上还是旧产物。
 
 ### 改文案之后
 
@@ -22,6 +22,24 @@ python3 tools/subset-fonts.py --check  # 校验现有字体是否覆盖当前用
 
 字体文件一变，`app.min.css` 里引用它的 `?v=<内容哈希>` 就跟着变——**所以重跑字体之后
 必须接着跑一次 `tools/build-css.py`**，否则 CSS 还指着旧哈希，浏览器会重新下载旧字体。
+
+### 改图标之后
+
+```bash
+python3 tools/build-icons.py          # 按 MANIFEST 重新子集化三个 woff2
+python3 tools/build-icons.py --check  # 校验清单 / fa-subset.css / index.html / 字体 cmap
+```
+
+图标清单在 `tools/build-icons.py` 的 `MANIFEST` 里（名字 → 字重 + 码点）。加一枚图标：
+`MANIFEST` 加一行 → `assets/fontawesome/fa-subset.css` 加一条 `.fa-xxx:before` →
+`index.html` 用上 → 跑脚本 → 再跑 `tools/build-css.py`。少任何一步都会报错而不是
+静默生成缺字形的字体（缺字形在页面上只表现为一个空白方块）。
+
+`moon` / `sun` 只在 CSS 里出现（`--theme-icon` 变量按主题切换），已在脚本的 `CSS_ONLY`
+里标注，不算“没人用”。
+
+FA Pro 是商业字体、二进制不进仓库。脚本按 `--src` > 环境变量 `LZC_FA_SRC` > 本机
+`~/Coding/static_lzc_app/fontawesome/webfonts` 的顺序找 `fa-light-300.ttf` 等源文件。
 
 ### 改样式之后
 

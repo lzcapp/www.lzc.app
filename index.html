@@ -112,9 +112,9 @@
          正文用字占首屏绝大部分文字；两个图标字体体积很小却在首屏就要用，
          一起预加载可以避免图标先空白、后补上的闪动。 -->
     <!-- preloads:start -->
-    <link rel="preload" href="./assets/fonts/noto-sans-sc-var.woff2?v=b8014cce" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./assets/fontawesome/webfonts/fa-solid-subset.woff2?v=63323d28" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="./assets/fontawesome/webfonts/fa-light-subset.woff2?v=2938f70c" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fonts/noto-sans-sc-var.woff2?v=7863f1ec" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fontawesome/webfonts/fa-solid-subset.woff2?v=23054f4c" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fontawesome/webfonts/fa-light-subset.woff2?v=d98b5de4" as="font" type="font/woff2" crossorigin>
     <!-- preloads:end -->
 
     <!-- 样式：fonts / style / fontawesome 三个源文件由 tools/build-css.py 合并压缩成
@@ -123,7 +123,7 @@
          改了 assets/css 或 assets/fontawesome 里的源文件后要重跑：
              python3 tools/build-css.py
          上线前自检： python3 tools/build-css.py --check -->
-    <link rel="stylesheet" href="./assets/css/app.min.css?v=d8bc8ed1">
+    <link rel="stylesheet" href="./assets/css/app.min.css?v=934dbd9c">
 </head>
 
 <body id="top">
@@ -437,6 +437,11 @@
                     <h4 class="friend-name">Hao_Tian</h4>
                     <a class="friend-link" href="https://www.haotian22.top/" target="_blank" rel="noopener">haotian22.top</a>
                 </li>
+
+                <li class="friend-item reveal">
+                    <h4 class="friend-name">QiaoSheng Li</h4>
+                    <a class="friend-link" href="https://qiao0601.top/" target="_blank" rel="noopener">qiao0601.top</a>
+                </li>
             </ul>
         </section>
 
@@ -524,6 +529,10 @@
     </main>
 
     <footer class="site-footer" id="site-footer">
+        <p class="footer-text footer-contact">
+            <a class="badge" href="mailto:hi@lzc.app"><i class="fa-light fa-envelope fa-fw" aria-hidden="true"></i>hi@lzc.app</a>
+            <a class="badge" href="https://github.com/lzcapp" target="_blank" rel="noopener me"><i class="fa-brands fa-github fa-fw" aria-hidden="true"></i>github.com/lzcapp</a>
+        </p>
         <p class="footer-text">
             <span class="badge" id="icpSpan">
                 <a href="" id="icpLink"><i class="fa-light fa-shield-check fa-fw" aria-hidden="true"></i><span id="icpText"></span></a>

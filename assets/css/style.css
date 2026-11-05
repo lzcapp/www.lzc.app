@@ -841,6 +841,11 @@ main {
     color: var(--accent-2);
 }
 
+/* 联系行：与下方备案/SSL 徽章同款，但单独一行，留一点呼吸 */
+.footer-contact {
+    margin-bottom: 10px;
+}
+
 .hide {
     display: none !important;
 }
